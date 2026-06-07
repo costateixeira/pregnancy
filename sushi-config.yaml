@@ -25,7 +25,8 @@ publisher:
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  hl7.fhir.be.core-clinical: 1.0.0   # provides BeObservation ("BeClinicalObservation")
+  hl7.fhir.be.core-clinical: 1.1.0   # provides BeObservation ("BeClinicalObservation")
+  hl7.fhir.be.core: 2.1.2   # provides BeObservation ("BeClinicalObservation")
 
 # dependencies:
 #   hl7.fhir.us.core: 3.1.0
