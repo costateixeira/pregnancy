@@ -69,6 +69,8 @@ ultrasound. Aligned with IPS `Observation-pregnancy-edd-uv-ips`. Linked to a
 `BePregnancyEpisode` via the `workflow-episodeOfCare` extension."
 
 // IPS binds Observation.code to the EDD method value set (required).
+// TODO: add the IPS package (hl7.fhir.uv.ips) as a dependency in sushi-config.yaml
+//       so $IpsEddVS (edd-method-uv-ips) resolves and the binding can be validated.
 * code from $IpsEddVS (required)
 
 * subject 1..1
