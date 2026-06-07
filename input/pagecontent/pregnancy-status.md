@@ -1,5 +1,3 @@
-# Pregnancy status
-
 Pregnancy and birth involve a broad set of administrative and clinical data,
 contributed and consumed by many initiatives and stakeholders over the full course
 of care — from the first confirmation of a pregnancy, through follow-up and
@@ -13,7 +11,7 @@ broader pregnancy care set is **out of scope of this iteration**, but the
 information model is designed so that it can be added later without redesign. See
 the [home page](index.html) for the full scope and roadmap.
 
-## The information model
+### The information model
 
 Within the pregnancy-status scope, the IG distinguishes two related but different
 concepts, each represented by a different FHIR resource type:
