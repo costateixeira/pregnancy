@@ -37,6 +37,7 @@
 
 Alias: $CondClinical = http://terminology.hl7.org/CodeSystem/condition-clinical
 Alias: $PregnancyId  = https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/pregnancy
+Alias: $ObsId        = https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation
 
 
 // ─── Shared actors ───────────────────────────────────────────────────────────
@@ -72,6 +73,8 @@ InstanceOf: BeEstimatedDateOfDeliveryObservation
 Usage:      #example
 Title:      "Expected date of delivery (core detail observation)"
 Description: "Estimated date of delivery. Part of the robust core: identical under every framing."
+* identifier.system = $ObsId
+* identifier.value = "edd-core"
 * status = #final
 * code = $LOINC#11778-8 "Delivery date Estimated"
 * subject = Reference(ex-pregnant-woman)
@@ -84,6 +87,8 @@ InstanceOf: BeExpectedNumberOfChildrenObservation
 Usage:      #example
 Title:      "Expected number of children (core detail observation)"
 Description: "Expected number of children. Part of the robust core: identical under every framing."
+* identifier.system = $ObsId
+* identifier.value = "enc-core"
 * status = #final
 * subject = Reference(ex-pregnant-woman)
 * performer = Reference(ex-gynaecologist)
@@ -104,6 +109,8 @@ InstanceOf: BePregnancyStatusObservation
 Usage:      #example
 Title:      "Pregnancy status as a summary Observation (no Condition)"
 Description: "Summary framing: pregnancy status as a point-in-time Observation that asserts the finding and groups the core detail observations via hasMember. IPS-aligned. This is the current scope."
+* identifier.system = $ObsId
+* identifier.value = "status-summary"
 * status = #final
 * subject = Reference(ex-pregnant-woman)
 * performer = Reference(ex-gynaecologist)
@@ -141,6 +148,8 @@ InstanceOf: BeEstimatedDateOfDeliveryObservation
 Usage:      #example
 Title:      "Expected date of delivery, referencing the Condition"
 Description: "The core EDD observation (ex-edd) with the single addition of focus -> the pregnancy Condition."
+* identifier.system = $ObsId
+* identifier.value = "edd-linked"
 * status = #final
 * code = $LOINC#11778-8 "Delivery date Estimated"
 * subject = Reference(ex-pregnant-woman)
@@ -154,6 +163,8 @@ InstanceOf: BeExpectedNumberOfChildrenObservation
 Usage:      #example
 Title:      "Expected number of children, referencing the Condition"
 Description: "The core expected-number-of-children observation (ex-children) with the single addition of focus -> the pregnancy Condition."
+* identifier.system = $ObsId
+* identifier.value = "enc-linked"
 * status = #final
 * subject = Reference(ex-pregnant-woman)
 * performer = Reference(ex-gynaecologist)
@@ -184,6 +195,8 @@ InstanceOf: BePregnancyStatusObservation
 Usage:      #example
 Title:      "Summary Observation over a Condition (both framings)"
 Description: "Both framings together: the same summary Observation, grouping the core observations via hasMember, and — like its members — referencing the pregnancy Condition via focus."
+* identifier.system = $ObsId
+* identifier.value = "status-both"
 * status = #final
 * subject = Reference(ex-pregnant-woman)
 * performer = Reference(ex-gynaecologist)
@@ -213,6 +226,8 @@ InstanceOf: BeEstimatedDateOfDeliveryObservation
 Usage:      #example
 Title:      "Expected date of delivery, tied to a pregnancy by identifier"
 Description: "The core EDD observation with focus as a LOGICAL reference (a unique pregnancy identifier) — usable today, with no Condition resource."
+* identifier.system = $ObsId
+* identifier.value = "edd-by-id"
 * status = #final
 * code = $LOINC#11778-8 "Delivery date Estimated"
 * subject = Reference(ex-pregnant-woman)
@@ -227,6 +242,8 @@ InstanceOf: BeExpectedNumberOfChildrenObservation
 Usage:      #example
 Title:      "Expected number of children, tied to a pregnancy by identifier"
 Description: "The core expected-number-of-children observation with focus as a LOGICAL reference (the same unique pregnancy identifier) — usable today, with no Condition resource."
+* identifier.system = $ObsId
+* identifier.value = "enc-by-id"
 * status = #final
 * subject = Reference(ex-pregnant-woman)
 * performer = Reference(ex-gynaecologist)
@@ -240,6 +257,8 @@ InstanceOf: BePregnancyStatusObservation
 Usage:      #example
 Title:      "Pregnancy status tied to a pregnancy by identifier"
 Description: "Summary Observation grouping its members via hasMember and tied to the pregnancy by the same logical reference (unique pregnancy identifier) on focus — usable today, with no Condition resource."
+* identifier.system = $ObsId
+* identifier.value = "status-by-id"
 * status = #final
 * subject = Reference(ex-pregnant-woman)
 * performer = Reference(ex-gynaecologist)
