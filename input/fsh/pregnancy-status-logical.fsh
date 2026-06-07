@@ -26,17 +26,6 @@ Characteristics: #can-be-target
   pregnancy observation. Identified by INSZ / NIHDI number and/or name."
 
 
-* pregnancyStatus 1..1 CodeableConcept "Pregnancy status"
-  "Current pregnancy status of the woman at the date of observation
-  (e.g. pregnant, not pregnant). Bound to SNOMED CT."
-  * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the observation"
-    "The practitioner (gynaecologist, GP or midwife) responsible for the
-    pregnancy observation. Identified by INSZ / NIHDI number and/or name."
-  * observationDate 1..1 date "Observation date"
-    "The last date on which the pregnant woman was observed by her
-    gynaecologist or midwife during the pregnancy."
-
-
 * recordedDateOfPregnancy 1..1 date "Recorded date of pregnancy"
   "The date the pregnancy was first registered in the system. This is not
   the date the pregnancy was observed, but the date it was entered in the
@@ -49,6 +38,15 @@ Characteristics: #can-be-target
     gynaecologist or midwife during the pregnancy."
 
 
+* pregnancyStatus 1..1 CodeableConcept "Pregnancy status"
+  "Current pregnancy status of the woman at the date of observation
+  (e.g. pregnant, not pregnant). Bound to SNOMED CT."
+  * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the observation"
+    "The practitioner (gynaecologist, GP or midwife) responsible for the
+    pregnancy observation. Identified by INSZ / NIHDI number and/or name."
+  * observationDate 1..1 date "Observation date"
+    "The last date on which the pregnant woman was observed by her
+    gynaecologist or midwife during the pregnancy."
 
 
 // TODO: is expectedDateOfDelivery in scope of the Episode of Care?
