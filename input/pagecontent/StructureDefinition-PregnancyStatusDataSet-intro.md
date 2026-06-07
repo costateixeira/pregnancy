@@ -1,4 +1,4 @@
-This logical model captures the **scope-independent** information of the pregnancy-status data set (Data Set 1, transaction *T1 - Submit Pregnancy*). It describes *what* data is exchanged, independently of *how* it is represented in FHIR resources.
+This logical model captures the **scope-independent** information of the pregnancy-status data set. It describes *what* data is exchanged, independently of *how* it is represented in FHIR resources.
 
 When this data set is mapped onto FHIR, the IG distinguishes two related but different concepts, each with its own scope and each represented by a different resource type:
 

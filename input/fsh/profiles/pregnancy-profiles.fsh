@@ -174,7 +174,7 @@ Id:          be-observation-pregnancy-live-births
 Title:       "Number of Live Births (Observation)"
 Description: "Number of alive births in this delivery. Obligatory when the
 pregnancy has ended. Linked to a `BePregnancyEpisode` via the
-`workflow-episodeOfCare` extension. **Out of scope of the pilot project.**"
+`workflow-episodeOfCare` extension. **Out of scope of this iteration.**"
 
 // TODO: confirm code (per-delivery, not lifetime) with the terminology expert.
 * code 1..1

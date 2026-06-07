@@ -2,109 +2,75 @@ Logical: PregnancyStatusDataSet
 Id: PregnancyStatusDataSet
 Title: "Pregnancy Status Model"
 Description: """
-Logical model for the pregnancy-status data exchanged in transaction
-**T1 - Submit Pregnancy**, as defined in Data Set 1 of the Pregnancy Status
+Logical model for the pregnancy-status data, as defined in the Pregnancy Status
 project data dictionary.
 
-This is the minimal data set used by the pilot project (Vitalink FHIR /
-MAGDA / VUTG / mijnburgerprofiel.be / mijngezondheid.be / caregivers).
-Elements in the pilot scope are marked **MUST HAVE**; elements that
-appear in Data Set 1 but are out of scope of the pilot are marked
-**ADDITIONAL**.
+This is the minimal data set for the pregnancy status (consumed, for example, via
+Vitalink FHIR / MAGDA / VUTG / mijnburgerprofiel.be / mijngezondheid.be /
+caregivers). Elements in scope of this iteration are marked **MUST HAVE**;
+elements that are out of scope are marked **ADDITIONAL**.
 """
 Characteristics: #can-be-target
 
-// ─── MUST HAVE (in scope of pilot project) ───────────────────────────────────
+// ─── MUST HAVE (in scope of this iteration) ──────────────────────────────────
 
-* patient 1..1 Reference(Patient) "Patient (pregnant woman)"
-  "The patient who is pregnant. In the pilot, the reference identifies the
-    patient by pseudonymised SSIN."
+* pregnancy 1..1 Base "Pregnancy Episode" "Pregnancy Episode"
 
-
-* practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the observation"
-  "The practitioner (gynaecologist, GP or midwife) responsible for the
-  pregnancy observation. Identified by INSZ / NIHDI number and/or name."
+  * patient 1..1 Reference(Patient) "Patient (pregnant woman)" "The patient who is pregnant. The reference may identify the patient by pseudonymised SSIN, depending on the implementation."
+  * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the pregnancy"
+  * updateDate 1..1 date "Last update date" "The last date on which the pregnant woman was observed by her gynaecologist or midwife during the pregnancy."
+  * firstRecordedDate 1..1 date "Recorded date of pregnancy" "The date the pregnancy was first registered in the system. This is not the date the pregnancy was observed, but the date it was entered in the system for the first time."
 
 
-* pregnancyStatus 1..1 CodeableConcept "Pregnancy status"
-  "Current pregnancy status of the woman at the date of observation
-  (e.g. pregnant, not pregnant). Bound to SNOMED CT."
-  * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the observation"
-    "The practitioner (gynaecologist, GP or midwife) responsible for the
-    pregnancy observation. Identified by INSZ / NIHDI number and/or name."
-  * observationDate 1..1 date "Observation date"
-    "The last date on which the pregnant woman was observed by her
-    gynaecologist or midwife during the pregnancy."
+// from https://build.fhir.org/ig/HL7/fhir-ips/en/StructureDefinition-Observation-pregnancy-status-uv-ips.html
+  * pregnancyStatus 1..1 Base "Pregnancy status (observation)" "Observation conveying the current pregnancy status of the woman at the date of observation (e.g. pregnant, not pregnant). Bound to SNOMED CT, EHDS Patient Summary aligned."
+    * value 1..1 CodeableConcept "The actual value" "Coded pregnancy status (e.g. pregnant, not pregnant)."
+//    * patient 1..1 Reference(Patient) "Patient (pregnant woman)" "The patient who is pregnant. In the pilot, the reference identifies the patient by pseudonymised SSIN."
+    * author 1..1 Reference(Practitioner) "Practitioner who recorded the pregnancy status"
+//    * observationDate 1..1 date "Observation date" "The date on which the pregnancy status was observed."
+//    * estimatedDateOfDelivery 0..1 Reference(Observation) "Estimated date of delivery (reference)" "Reference to the sibling `estimatedDateOfDelivery` observation that carries the EDD value for this pregnancy status."
 
 
-* recordedDateOfPregnancy 1..1 date "Recorded date of pregnancy"
-  "The date the pregnancy was first registered in the system. This is not
-  the date the pregnancy was observed, but the date it was entered in the
-  system for the first time."
-  * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the observation"
-    "The practitioner (gynaecologist, GP or midwife) responsible for the
-    pregnancy observation. Identified by INSZ / NIHDI number and/or name."
-  * observationDate 1..1 date "Observation date"
-    "The last date on which the pregnant woman was observed by her
-    gynaecologist or midwife during the pregnancy."
+  // Date the pregnancy started (project data dictionary; no dedicated IPS profile)
+    * pregnancyStartDate 1..1 Base "Date the pregnancy started" "The date the pregnancy began, usually estimated as the first day of the last menstrual period (LMP) or from an early ultrasound."
+      * value 1..1 date "The actual value"
+//      * patient 1..1 Reference(Patient) "Patient (pregnant woman)" "The patient who is pregnant. In the pilot, the reference identifies the patient by pseudonymised SSIN."
+//      * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the pregnancy"
+//      * observationDate 1..1 date "Recorded date of pregnancy" "The date the pregnancy was first registered in the system. This is not the date the pregnancy was observed, but the date it was entered in the system for the first time."
+
+
+  // https://build.fhir.org/ig/HL7/fhir-ips/en/StructureDefinition-Observation-pregnancy-edd-uv-ips.html
+    * estimatedDateOfDelivery 1..1 Base "Estimated date of delivery" "The date the practitioner expects the delivery, usually etimated from the ultrasound. It normally does not change after the initial etimation; the actual delivery date is typically within ±2 weeks."
+      * value 1..1 date "The actual value"
+//      * patient 1..1 Reference(Patient) "Patient (pregnant woman)" "The patient who is pregnant. In the pilot, the reference identifies the patient by pseudonymised SSIN."
+//      * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the pregnancy"
+//      * observationDate 1..1 date "Recorded date of pregnancy" "The date the pregnancy was first registered in the system. This is not the date the pregnancy was observed, but the date it was entered in the system for the first time."
+
+
+    * dateOfEndOfPregnancy 0..1 Base "Date of end of pregnancy" "The actual end date of the pregnancy."
+      * value 1..1 date "The actual value"
+//      * patient 1..1 Reference(Patient) "Patient (pregnant woman)" "The patient who is pregnant. In the pilot, the reference identifies the patient by pseudonymised SSIN."
+//      * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the pregnancy"
+//      * observationDate 1..1 date "Recorded date of pregnancy" "The date the pregnancy was first registered in the system. This is not the date the pregnancy was observed, but the date it was entered in the system for the first time."
+
+    * expectedNumberOfChildren 1..1 Base "Expected number of children" "The number of births the practitioner expects in the delivery, usually estimated from the ultrasound."
+      * value 1..1 integer "The actual value"
+//      * patient 1..1 Reference(Patient) "Patient (pregnant woman)" "The patient who is pregnant. In the pilot, the reference identifies the patient by pseudonymised SSIN."
+//      * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the pregnancy"
+//      * observationDate 1..1 date "Recorded date of pregnancy" "The date the pregnancy was first registered in the system. This is not the date the pregnancy was observed, but the date it was entered in the system for the first time."
 
 
 
 
-// TODO: is expectedDateOfDelivery in scope of the Episode of Care?
-* expectedDateOfDelivery 1..1 date "Estimated date of delivery"
-  "The date the practitioner expects the delivery, usually etimated from
-  the ultrasound. It normally does not change after the initial etimation;
-  the actual delivery date is typically within ±2 weeks."
-  * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the observation"
-    "The practitioner (gynaecologist, GP or midwife) responsible for the
-    pregnancy observation. Identified by INSZ / NIHDI number and/or name."
-  * observationDate 1..1 date "Observation date"
-    "The last date on which the pregnant woman was observed by her
-    gynaecologist or midwife during the pregnancy."
+//     * numberOfSilentBirths 0..1 Base "Number of silent births" "The number of fetal deaths in this delivery. Obligatory when `dateOfEndOfPregnancy` is filled in."
+//       * value 1..1 integer "The actual value"
+// //      * patient 1..1 Reference(Patient) "Patient (pregnant woman)" "The patient who is pregnant. In the pilot, the reference identifies the patient by pseudonymised SSIN."
+// //      * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the pregnancy"
+// //      * observationDate 1..1 date "Recorded date of pregnancy" "The date the pregnancy was first registered in the system. This is not the date the pregnancy was observed, but the date it was entered in the system for the first time."
 
 
-* expectedNumberOfChildren 1..1 integer "Expected number of children"
-  "The number of births the practitioner expects in the delivery, usually
-  etimated from the ultrasound."
-  * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the observation"
-    "The practitioner (gynaecologist, GP or midwife) responsible for the
-    pregnancy observation. Identified by INSZ / NIHDI number and/or name."
-  * observationDate 1..1 date "Observation date"
-    "The last date on which the pregnant woman was observed by her
-    gynaecologist or midwife during the pregnancy."
-
-// update rules: Same GP can create a new version; different GP can only create a new one.
-
-* actualDateOfEndOfPregnancy 0..1 date "Date of end of pregnancy"
-  "The actual end date of the pregnancy."
-  * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the observation"
-    "The practitioner (gynaecologist, GP or midwife) responsible for the
-    pregnancy observation. Identified by INSZ / NIHDI number and/or name."
-  * observationDate 1..1 date "Observation date"
-    "The last date on which the pregnant woman was observed by her
-    gynaecologist or midwife during the pregnancy."
-
-
-// * numberOfAliveBirths 0..1 integer "Number of alive births"
-//   "The number of alive births in this delivery. Obligatory when
-//   `dateOfEndOfPregnancy` is filled in."
-//   * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the observation"
-//     "The practitioner (gynaecologist, GP or midwife) responsible for the
-//     pregnancy observation. Identified by INSZ / NIHDI number and/or name."
-//   * observationDate 1..1 date "Observation date"
-//     "The last date on which the pregnant woman was observed by her
-//     gynaecologist or midwife during the pregnancy."
-
-
-// * numberOfSilentBirths 0..1 integer "Number of silent births"
-//   "The number of fetal deaths in this delivery. Obligatory when
-//   `dateOfEndOfPregnancy` is filled in."
-//   * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the observation"
-//     "The practitioner (gynaecologist, GP or midwife) responsible for the
-//     pregnancy observation. Identified by INSZ / NIHDI number and/or name."
-//   * observationDate 1..1 date "Observation date"
-//     "The last date on which the pregnant woman was observed by her
-//     gynaecologist or midwife during the pregnancy."
-
-// // ─── ADDITIONAL (not explicitly in scope of pilot project) ───────────────────
+//     * numberOfAliveBirths 0..1 Base "Number of alive births" "The number of alive births in this delivery. Obligatory when `dateOfEndOfPregnancy` is filled in."
+//       * value 1..1 integer "The actual value"
+// //      * patient 1..1 Reference(Patient) "Patient (pregnant woman)" "The patient who is pregnant. In the pilot, the reference identifies the patient by pseudonymised SSIN."
+// ///      * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the pregnancy"
+// //      * observationDate 1..1 date "Recorded date of pregnancy" "The date the pregnancy was first registered in the system. This is not the date the pregnancy was observed, but the date it was entered in the system for the first time."

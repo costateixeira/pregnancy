@@ -2,13 +2,13 @@
 
 ## Introduction
 
-This Implementation Guide (IG) defines how pregnancy data is exchanged in Belgium using HL7 FHIR. It is published by Departement Zorg in the context of a project that connects [Vitalink](https://www.vitalink.be) (the Flemish vault for citizens' medical data) and [MAGDA](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/magda) (the Flemish data-exchange platform between Flemish and Federal government agencies), to make pregnancy data available to government agencies, to the pregnant woman herself, and to her caregivers.
+This Implementation Guide (IG) defines how pregnancy data is exchanged in Belgium using HL7 FHIR. Pregnancy and birth involve a broad pregnancy care set, contributed and consumed by many initiatives and stakeholders over the full course of care. This IG describes that care set and is designed to grow as additional stakeholders and projects contribute their data and use cases.
 
-The current release is the **first pilot iteration** and intentionally covers a small, well-bounded data set ("pregnancy status"). The IG is designed to grow: subsequent iterations are expected to add administrative and clinical pregnancy data contributed by other stakeholders and related projects.
+The current release covers a small, well-bounded part of it: the [**pregnancy status**](pregnancy-status.html) data set. [Vitalink](https://www.vitalink.be) (the vault for citizens' medical data) and [MAGDA](https://www.vlaanderen.be/digitaal-vlaanderen/onze-oplossingen/magda) (the data-exchange platform between Flemish and Federal government agencies) are one implementation of this data set, making pregnancy data available to government agencies, to the pregnant woman herself, and to her caregivers. Subsequent iterations are expected to add administrative and clinical pregnancy data contributed by other stakeholders and related projects.
 
-## Scope of the pilot
+## Scope of this release
 
-The pilot covers a minimal pregnancy data set, sufficient to support the following business cases:
+This release covers a minimal pregnancy data set, sufficient to support the following business cases:
 
 1. **Automated entitlement to the *Groeipakket* (start amount).**
    [VUTG (Agentschap Uitbetaling Groeipakket)](https://www.groeipakket.be) needs to determine the right of a pregnant woman to receive the *startbedrag* of the *Groeipakket* (formerly *kinderbijslag*). To do so, VUTG needs to know:
@@ -18,7 +18,7 @@ The pilot covers a minimal pregnancy data set, sufficient to support the followi
 
    In the case of a *silent birth*, the entitlement also applies if the pregnancy reached at least 180 days.
 
-   Today this information is provided on a paper PDF form, signed by a gynaecologist, GP or midwife. The pilot replaces that paper flow with an automated process based on pregnancy data already available in EMR / hospital systems and shared via Vitalink FHIR.
+   Today this information is provided on a paper PDF form, signed by a gynaecologist, GP or midwife. This replaces that paper flow with an automated process based on pregnancy data already available in EMR / hospital systems and shared via Vitalink FHIR.
 
 2. **On-line pregnancy certificate via [mijnburgerprofiel.be](https://www.mijnburgerprofiel.be).**
    The pregnant woman can request a pregnancy certificate on-line, for purposes such as official notification to the employer, NMBS first-class travel entitlement, etc.
@@ -31,7 +31,7 @@ Even within this limited scope, the data has immediate clinical value — for ex
 
 ## Out of scope (for this iteration)
 
-The requirements analysis for a broader set of pregnancy data is **not** part of this pilot. However, the solution is designed with that broader scope in mind, anticipated for a later iteration (possibly 2027 or later).
+The requirements analysis for a broader set of pregnancy data is **not** part of this iteration. However, the solution is designed with that broader scope in mind, anticipated for a later iteration (possibly 2027 or later).
 
 ## Information model — two scopes, two resources
 
@@ -61,7 +61,7 @@ This IG is intended to evolve as additional stakeholders and projects contribute
 - **PALS Initiative** (Stad Gent / District09) — *Pro-Actieve dienstverlening rond Life-event Services* (including pregnancy and child birth);
 - **AZ Turnhout** pilot to digitalize the *moeder/kind boekje* using SOLID principles.
 
-These projects are *related* but not direct dependencies of the current pilot.
+These projects are *related* but not direct dependencies of the current iteration.
 
 ## Stakeholders
 
