@@ -71,9 +71,10 @@ PSO "1" o-r- "0..1" ade
 '          The observation itself is unchanged.
 edd "1..1" .u.> "0..1" PREG : focus
 enc "1..1" .u.> "0..1" PREG : focus
+PSO "0..1" .u.> "0..1" PREG : focus
 
 ' Option B: the Condition is summarized into the PregnancyStatus observation
-PREG "1" ..> "1" PSO : <<summarized as>>
+'PREG "1" ..> "1" PSO : <<summarized as>>
 
 note left of PREG
   **Full Scope** - we use the **Condition**
