@@ -33,6 +33,23 @@ Even within this limited scope, the data has immediate clinical value — for ex
 
 The requirements analysis for a broader set of pregnancy data is **not** part of this pilot. However, the solution is designed with that broader scope in mind, anticipated for a later iteration (possibly 2027 or later).
 
+## Information model — two scopes, two resources
+
+The IG deliberately distinguishes two related but different concepts. Each has its own scope, and each is represented by a different FHIR resource type.
+
+1. **Pregnancy status** — a *point-in-time clinical finding*: at a given observation date, is the person pregnant and what is the status (pregnant / not pregnant / possibly pregnant)? This is the question that an ER physician or an automated entitlement check needs answered "as of now". It is naturally a **point-in-time Observation**, aligned with the international *Pregnancy status* observation (IPS, LOINC `82810-3`, SNOMED-coded value).
+
+2. **The pregnancy itself** — the *longitudinal clinical episode*: a pregnancy that begins, runs over time and eventually ends. It has an onset, an (estimated) due date, an expected number of children and an actual end date, and a clinical status that moves from active to resolved. This is naturally a **clinical Condition / episode**, where onset and abatement map to the start and end of the pregnancy.
+
+Because the two concepts have different scopes, the IG represents them with two distinct resource types:
+
+| Concept | Scope | FHIR resource | Profile |
+|---|---|---|---|
+| Pregnancy status | point-in-time finding | `Observation` | [BePregnancyStatusObservation](StructureDefinition-be-pregnancy-status-observation.html) |
+| The pregnancy itself | longitudinal episode | `Condition` | [BePregnancyCondition](StructureDefinition-be-pregnancy-condition.html) |
+
+In both cases the supporting detail data — expected date of delivery, expected number of children and actual end date — are carried as separate `BeClinicalObservation`s, grouped under the pregnancy-status Observation (via `Observation.hasMember`) or linked to the pregnancy Condition. The shared, scope-independent information model for this data set is the logical model [PregnancyStatusDataSet1](StructureDefinition-PregnancyStatusDataSet1.html).
+
 ## Roadmap — incremental scope
 
 This IG is intended to evolve as additional stakeholders and projects contribute pregnancy-related data and use cases. Related initiatives that may inform or contribute to future iterations include:
