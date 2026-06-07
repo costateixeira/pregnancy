@@ -67,13 +67,16 @@ The two links are independent and serve different purposes:
 - `Observation.focus` is how an observation is tied to the pregnancy `Condition`.
   **Both** the `PregnancyStatus` Observation and its member observations point to
   the `Condition` this way, so any observation that is part of a pregnancy is known.
+  This `focus` can be a **literal reference** to a `Condition` resource **or a
+  logical reference** (`Reference.identifier`) — that is, **a unique identifier of
+  the pregnancy**.
 
-> **Note.** The `focus` link to the `Condition` is **not implemented yet**. As long
-> as no `Condition` profile for the pregnancy is in place, `focus` is simply **not
-> used** — the observations stand on their own, grouped under the `PregnancyStatus`
-> Observation via `hasMember`. When a `Condition` profile is introduced, the `focus`
-> reference is added to the existing observations (parent and members alike), without
-> any other change.
+> **Note.** While there is no `BePregnancyCondition` resource to point at, the
+> `focus` can already carry a **logical reference — a unique pregnancy identifier**.
+> That identifier groups all the observations that belong to the same pregnancy,
+> without any `Condition` resource being exchanged. Later, when a `Condition`
+> resource does exist, the very same `focus` simply resolves to it (a literal
+> reference) — the observations themselves do not change.
 
 <figure>
   {% include pregnancystatus.svg %}

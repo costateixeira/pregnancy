@@ -24,14 +24,19 @@
 //  Note: hasMember (summary -> its members) and focus (observation -> Condition)
 //  are independent. hasMember has nothing to do with the Condition.
 //
-//  STATUS: the `focus` link is NOT constrained by the profiles yet; it will be
-//  added once a Condition profile is in place. Until then it is unused and the
-//  observations stand on their own under the summary Observation. The `*-linked`
-//  instances illustrate the future state — the same observations after that one
-//  `focus` reference has been added.
+//  `focus` may be a LITERAL reference to a Condition resource, or a LOGICAL
+//  reference (Reference.identifier) holding a unique pregnancy identifier. The
+//  logical form is usable TODAY — before any Condition resource exists it already
+//  groups the observations of one pregnancy. The examples show both:
+//    `*-linked` instances : focus as a literal Reference(ex-pregnancy-condition).
+//    `*-by-id`  instances : focus as a logical reference (a pregnancy identifier),
+//                           with NO Condition resource at all.
+//  Either way, when a Condition resource later exists the same `focus` resolves to
+//  it with no change to the observations.
 // ═══════════════════════════════════════════════════════════════════════════════
 
 Alias: $CondClinical = http://terminology.hl7.org/CodeSystem/condition-clinical
+Alias: $PregnancyId  = https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/pregnancy
 
 
 // ─── Shared actors ───────────────────────────────────────────────────────────
@@ -187,3 +192,60 @@ Description: "Both framings together: the same summary Observation, grouping the
 * hasMember[edd] = Reference(ex-edd-linked)
 * hasMember[+] = Reference(ex-children-linked)
 * focus = Reference(ex-pregnancy-condition) // the summary points to the Condition too
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+//  USABLE TODAY — focus as a logical reference (a unique pregnancy identifier)
+//
+//  Before any BePregnancyCondition resource exists, `focus` can already carry a
+//  LOGICAL reference: Reference.identifier holding a unique pregnancy identifier.
+//  This groups every observation that belongs to the same pregnancy WITHOUT a
+//  Condition resource being exchanged. Later the same `focus` simply resolves to a
+//  Condition (a literal reference) with no change to these observations.
+//
+//  Every instance below shares the same pregnancy identifier
+//  ($PregnancyId | PREG-2026-0001), which is what ties them together as one
+//  pregnancy. Note there is NO Condition instance here.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Instance:   ex-edd-by-id
+InstanceOf: BeEstimatedDateOfDeliveryObservation
+Usage:      #example
+Title:      "Expected date of delivery, tied to a pregnancy by identifier"
+Description: "The core EDD observation with focus as a LOGICAL reference (a unique pregnancy identifier) — usable today, with no Condition resource."
+* status = #final
+* code = $LOINC#11778-8 "Delivery date Estimated"
+* subject = Reference(ex-pregnant-woman)
+* performer = Reference(ex-gynaecologist)
+* effectiveDateTime = "2026-02-10"
+* valueDateTime = "2026-09-15"
+* focus.identifier.system = $PregnancyId
+* focus.identifier.value = "PREG-2026-0001"
+
+Instance:   ex-children-by-id
+InstanceOf: BeExpectedNumberOfChildrenObservation
+Usage:      #example
+Title:      "Expected number of children, tied to a pregnancy by identifier"
+Description: "The core expected-number-of-children observation with focus as a LOGICAL reference (the same unique pregnancy identifier) — usable today, with no Condition resource."
+* status = #final
+* subject = Reference(ex-pregnant-woman)
+* performer = Reference(ex-gynaecologist)
+* effectiveDateTime = "2026-02-10"
+* valueQuantity.value = 1
+* focus.identifier.system = $PregnancyId
+* focus.identifier.value = "PREG-2026-0001"
+
+Instance:   ex-pregnancy-status-by-id
+InstanceOf: BePregnancyStatusObservation
+Usage:      #example
+Title:      "Pregnancy status tied to a pregnancy by identifier"
+Description: "Summary Observation grouping its members via hasMember and tied to the pregnancy by the same logical reference (unique pregnancy identifier) on focus — usable today, with no Condition resource."
+* status = #final
+* subject = Reference(ex-pregnant-woman)
+* performer = Reference(ex-gynaecologist)
+* effectiveDateTime = "2026-02-10"
+* valueCodeableConcept = $SCT#77386006 "Pregnant (finding)"
+* hasMember[edd] = Reference(ex-edd-by-id)
+* hasMember[+] = Reference(ex-children-by-id)
+* focus.identifier.system = $PregnancyId
+* focus.identifier.value = "PREG-2026-0001"
