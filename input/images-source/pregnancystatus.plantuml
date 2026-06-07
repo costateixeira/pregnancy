@@ -71,25 +71,25 @@ class "**actualDateOfEndOfPregnancy**\n(ClinicalObservation)" as ade {
 '          so a member observation never changes when grouped here.
 PSO "1" o-u- "1..1" edd
 PSO "1" o-u- "1..1" enc
-PSO "1" o-l- "0..1" ade
+PSO "1" o-r- "0..1" ade
 
 ' DASHED = can be ADDED LATER, no redesign: when a Condition is introduced it is
 '          the OBSERVATION that references the parent (e.g. Observation.focus).
 '          The observation itself is unchanged.
-edd "1..1" ..> "0..1" PREG : focus (optional)
-enc "1..1" ..> "0..1" PREG : focus (optional)
+edd "1..1" .u.> "0..1" PREG : focus
+enc "1..1" .u.> "0..1" PREG : focus
 
 ' Option B: the Condition is summarized into the PregnancyStatus observation
 PREG "1" ..> "1" PSO : <<summarized as>>
 
-note top of PREG
-  **Option B** - we receive the **Condition**
+note left of PREG
+  **Phase 2** - we use the **Condition**
   (the pregnancy as a clinical episode),
-  and can derive the summary from it.
+  as a context and "parent" object.
 end note
 
-note top of PSO
-  **Option A** - we are interested only in the Pregnancy status,
+note left of PSO
+  **Phase 1** - we are interested only in the Pregnancy status,
   i.e. the PregnancyStatus Observation
   (IPS-compatible). No Condition exchanged. 
   When Pregnancy (Condition) exists, the PregnancyStatus 
@@ -98,12 +98,12 @@ end note
 
 legend bottom
   **Incremental design - the Condition can be added later, with NO redesign**
-  ==
+  
   Start with **PregnancyStatus** (Observation) + its member observations.
   The **parent knows its children** (Observation.hasMember); the children do not
   point back. So a member observation (EDD, number of children, end date)
   **never changes intrinsically** when it is grouped under a PregnancyStatus.
-  --
+  
   A **Pregnancy (Condition)** and its relationships can be **added later**.
   In that case it is the **observation that references the parent**
   (e.g. Observation.focus, or an extension). Adding the Condition therefore
