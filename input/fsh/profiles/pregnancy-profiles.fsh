@@ -1,23 +1,38 @@
 // Profiles derived from the PregnancyStatusDataSet logical model.
 //
 // Shape:
-//   - 1 EpisodeOfCare profile (BePregnancyEpisode) — anchors the pregnancy.
 //   - N Observation profiles, each parented on BeClinicalObservation
-//     (hl7.fhir.be.core-clinical), and each linked to the BePregnancyEpisode
-//     via the workflow-episodeOfCare extension
-//     (http://hl7.org/fhir/StructureDefinition/workflow-episodeOfCare).
+//     (hl7.fhir.be.core-clinical).
 //   - The BePregnancyStatusObservation hasMember slice references the
 //     BeEstimatedDateOfDeliveryObservation (per IPS Pregnancy Status pattern).
+//   - Observations may be tied to a pregnancy via Observation.focus — either a
+//     reference to a BePregnancyCondition or a logical reference (a unique
+//     pregnancy identifier). See pregnancy-status.html.
 //
 // IPS references:
 //   - http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-pregnancy-status-uv-ips
 //   - http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-pregnancy-edd-uv-ips
 //   - http://hl7.org/fhir/uv/ips/StructureDefinition/Observation-pregnancy-outcome-uv-ips
+//
+// ═══════════════════════════════════════════════════════════════════════════════
+//  ⚠ PARENT = base Observation (NOT be-clinical-observation) — deliberate, and
+//    intended to be TEMPORARY.
+//
+//  Why: be-clinical-observation requires Observation.performer 1..*. Base FHIR
+//  does not (performer is 0..*). We do NOT want to force a performer on these
+//  pregnancy observations, so for now they are profiled on base Observation —
+//  which means they DO NOT claim be-clinical-observation conformance and lose its
+//  other BE constraints (e.g. identifier 1..*, BE bindings).
+//
+//  OPEN QUESTION for BE core: should be-clinical-observation relax performer to
+//  0..*? If yes, re-parent all profiles below back onto be-clinical-observation
+//  ($BeClinObs) to regain BE alignment — no other change needed.
+// ═══════════════════════════════════════════════════════════════════════════════
 
 Alias: $BeClinObs   = https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/be-clinical-observation
 Alias: $BePatient   = https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-patient
 Alias: $BePract     = https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-practitioner
-Alias: $WfEpisode   = http://hl7.org/fhir/StructureDefinition/workflow-episodeOfCare
+Alias: $BeRecorder  = https://www.ehealth.fgov.be/standards/fhir/core/StructureDefinition/be-ext-recorder
 Alias: $LOINC       = http://loinc.org
 Alias: $SCT         = http://snomed.info/sct
 Alias: $UCUM        = http://unitsofmeasure.org
@@ -28,12 +43,12 @@ Alias: $IpsPsVS     = http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ip
 // ─── Observation: pregnancy status ──────────────────────────────────────────
 
 Profile:     BePregnancyStatusObservation
-Parent:      $BeClinObs
+Parent:      Observation
 Id:          be-observation-pregnancy-status
 Title:       "Pregnancy Status (Observation)"
 Description: "Current pregnancy status of a woman (e.g. pregnant, not pregnant).
-Aligned with IPS `Observation-pregnancy-status-uv-ips`. Linked to a
-`BePregnancyEpisode` via the `workflow-episodeOfCare` extension. Per the IPS
+Aligned with IPS `Observation-pregnancy-status-uv-ips`. May be tied to a
+pregnancy via `Observation.focus`. Per the IPS
 pattern, `hasMember` references the related EDD observation."
 
 * code = $LOINC#82810-3 "Pregnancy status"
@@ -41,7 +56,12 @@ pattern, `hasMember` references the related EDD observation."
 * subject 1..1
 * subject only Reference($BePatient)
 
-* performer 1..1
+// The practitioner responsible for declaring the pregnancy status is carried in
+// the be-ext-recorder extension. Observation.performer is not constrained here
+// (optional, as on base Observation).
+* extension contains
+  $BeRecorder named recorder 1..1
+* extension[recorder] MS
 
 * effective[x] 1..1
 * effective[x] only dateTime
@@ -61,12 +81,12 @@ pattern, `hasMember` references the related EDD observation."
 // ─── Observation: estimated date of delivery ────────────────────────────────
 
 Profile:     BeEstimatedDateOfDeliveryObservation
-Parent:      $BeClinObs
+Parent:      Observation
 Id:          be-observation-pregnancy-edd
 Title:       "Estimated Date of Delivery (Observation)"
 Description: "Expected delivery date for a pregnancy, usually estimated from
-ultrasound. Aligned with IPS `Observation-pregnancy-edd-uv-ips`. Linked to a
-`BePregnancyEpisode` via the `workflow-episodeOfCare` extension."
+ultrasound. Aligned with IPS `Observation-pregnancy-edd-uv-ips`. May be tied to
+a pregnancy via `Observation.focus`."
 
 // IPS binds Observation.code to the EDD method value set (required).
 // TODO: add the IPS package (hl7.fhir.uv.ips) as a dependency in sushi-config.yaml
@@ -75,8 +95,6 @@ ultrasound. Aligned with IPS `Observation-pregnancy-edd-uv-ips`. Linked to a
 
 * subject 1..1
 * subject only Reference($BePatient)
-
-* performer 1..1
 
 * effective[x] 1..1
 * effective[x] only dateTime
@@ -88,11 +106,11 @@ ultrasound. Aligned with IPS `Observation-pregnancy-edd-uv-ips`. Linked to a
 // ─── Observation: end of pregnancy date ─────────────────────────────────────
 
 Profile:     BeEndOfPregnancyDateObservation
-Parent:      $BeClinObs
+Parent:      Observation
 Id:          be-observation-pregnancy-end-date
 Title:       "End of Pregnancy Date (Observation)"
-Description: "Actual end date of a pregnancy. Linked to a `BePregnancyEpisode`
-via the `workflow-episodeOfCare` extension."
+Description: "Actual end date of a pregnancy. May be tied to a pregnancy via
+`Observation.focus`."
 
 // TODO: bind Observation.code to a Belgian/SNOMED value set for the
 // "end of pregnancy" concept once the terminology expert confirms it.
@@ -100,8 +118,6 @@ via the `workflow-episodeOfCare` extension."
 
 * subject 1..1
 * subject only Reference($BePatient)
-
-* performer 1..1
 
 * effective[x] 1..1
 * effective[x] only dateTime
@@ -113,19 +129,17 @@ via the `workflow-episodeOfCare` extension."
 // ─── Observation: expected number of children ──────────────────────────────
 
 Profile:     BeExpectedNumberOfChildrenObservation
-Parent:      $BeClinObs
+Parent:      Observation
 Id:          be-observation-pregnancy-fetus-count
 Title:       "Expected Number of Children (Observation)"
 Description: "Expected number of children for a pregnancy (number of fetuses,
-usually determined by ultrasound). Linked to a `BePregnancyEpisode` via the
-`workflow-episodeOfCare` extension."
+usually determined by ultrasound). May be tied to a pregnancy via
+`Observation.focus`."
 
 * code = $LOINC#11640-0 "Fetus Number"
 
 * subject 1..1
 * subject only Reference($BePatient)
-
-* performer 1..1
 
 * effective[x] 1..1
 * effective[x] only dateTime
@@ -140,12 +154,12 @@ usually determined by ultrasound). Linked to a `BePregnancyEpisode` via the
 // ─── Observation: number of silent births (this delivery) ──────────────────
 
 Profile:     BeNumberOfSilentBirthsObservation
-Parent:      $BeClinObs
+Parent:      Observation
 Id:          be-observation-pregnancy-silent-births
 Title:       "Number of Silent Births (Observation)"
 Description: "Number of fetal deaths in this delivery. Obligatory when the
-pregnancy has ended. Linked to a `BePregnancyEpisode` via the
-`workflow-episodeOfCare` extension."
+pregnancy has ended. May be tied to a pregnancy via
+`Observation.focus`."
 
 // TODO: confirm code with the terminology expert. Note that IPS pregnancy
 // outcome codes (e.g. LOINC 11636-8 "Pregnancy losses --in mother") are
@@ -155,8 +169,6 @@ pregnancy has ended. Linked to a `BePregnancyEpisode` via the
 
 * subject 1..1
 * subject only Reference($BePatient)
-
-* performer 1..1
 
 * effective[x] 1..1
 * effective[x] only dateTime
@@ -171,20 +183,18 @@ pregnancy has ended. Linked to a `BePregnancyEpisode` via the
 // ─── Observation: number of live births (this delivery) ────────────────────
 
 Profile:     BeNumberOfLiveBirthsObservation
-Parent:      $BeClinObs
+Parent:      Observation
 Id:          be-observation-pregnancy-live-births
 Title:       "Number of Live Births (Observation)"
 Description: "Number of alive births in this delivery. Obligatory when the
-pregnancy has ended. Linked to a `BePregnancyEpisode` via the
-`workflow-episodeOfCare` extension. **Out of scope of this iteration.**"
+pregnancy has ended. May be tied to a pregnancy via
+`Observation.focus`. **Out of scope of this iteration.**"
 
 // TODO: confirm code (per-delivery, not lifetime) with the terminology expert.
 * code 1..1
 
 * subject 1..1
 * subject only Reference($BePatient)
-
-* performer 1..1
 
 * effective[x] 1..1
 * effective[x] only dateTime

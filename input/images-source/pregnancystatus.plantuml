@@ -21,7 +21,7 @@ hide circle
 class "**Pregnancy**\n(Condition)" as PREG #ffe6b5 {
 |_ patient 1..1 <<Ref>>
 |_ identifier 1..* <<Id>>
-|_ recorder 1..1 <<Ref>>
+|_ author 1..1 <<Ref>>
 |_ recordedDate 1..1 <<date>>
 |_ clinicalStatus 1..1 <<code>>  (active | resolved)
 |_ code 1..1 <<code>>            (pregnant)

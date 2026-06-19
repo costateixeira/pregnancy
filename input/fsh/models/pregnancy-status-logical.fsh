@@ -2,13 +2,11 @@ Logical: PregnancyStatusDataSet
 Id: PregnancyStatusDataSet
 Title: "Pregnancy Status Model"
 Description: """
-Logical model for the pregnancy-status data, as defined in the Pregnancy Status
-project data dictionary.
+Logical model for the pregnancy-status data.
 
 This is the minimal data set for the pregnancy status (consumed, for example, via
 Vitalink FHIR / MAGDA / VUTG / mijnburgerprofiel.be / mijngezondheid.be /
-caregivers). Elements in scope of this iteration are marked **MUST HAVE**;
-elements that are out of scope are marked **ADDITIONAL**.
+caregivers).
 """
 Characteristics: #can-be-target
 
@@ -17,7 +15,7 @@ Characteristics: #can-be-target
 * pregnancy 1..1 Base "Pregnancy Episode" "Pregnancy Episode"
 
   * patient 1..1 Reference(Patient) "Patient (pregnant woman)" "The patient who is pregnant. The reference may identify the patient by pseudonymised SSIN, depending on the implementation."
-  * practitioner 1..1 Reference(Practitioner) "Practitioner responsible for the pregnancy"
+  * author 1..1 Reference(Practitioner) "The healthcare professional who takes responsibility for the recording of the pregnancy information"
   * updateDate 1..1 date "Last update date" "The last date on which the pregnant woman was observed by her gynaecologist or midwife during the pregnancy."
   * firstRecordedDate 1..1 date "Recorded date of pregnancy" "The date the pregnancy was first registered in the system. This is not the date the pregnancy was observed, but the date it was entered in the system for the first time."
 
