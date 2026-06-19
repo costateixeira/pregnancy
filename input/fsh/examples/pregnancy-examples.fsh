@@ -113,7 +113,7 @@ Description: "Summary framing: pregnancy status as a point-in-time Observation t
 * identifier.value = "status-summary"
 * status = #final
 * subject = Reference(ex-pregnant-woman)
-* performer = Reference(ex-gynaecologist)
+* extension[recorder].valueReference = Reference(ex-gynaecologist)
 * effectiveDateTime = "2026-02-10"
 * valueCodeableConcept = $SCT#77386006 "Pregnant (finding)"
 * hasMember[edd] = Reference(ex-edd)
@@ -199,7 +199,7 @@ Description: "Both framings together: the same summary Observation, grouping the
 * identifier.value = "status-both"
 * status = #final
 * subject = Reference(ex-pregnant-woman)
-* performer = Reference(ex-gynaecologist)
+* extension[recorder].valueReference = Reference(ex-gynaecologist)
 * effectiveDateTime = "2026-02-10"
 * valueCodeableConcept = $SCT#77386006 "Pregnant (finding)"
 * hasMember[edd] = Reference(ex-edd-linked)
@@ -261,7 +261,7 @@ Description: "Summary Observation grouping its members via hasMember and tied to
 * identifier.value = "status-by-id"
 * status = #final
 * subject = Reference(ex-pregnant-woman)
-* performer = Reference(ex-gynaecologist)
+* extension[recorder].valueReference = Reference(ex-gynaecologist)
 * effectiveDateTime = "2026-02-10"
 * valueCodeableConcept = $SCT#77386006 "Pregnant (finding)"
 * hasMember[edd] = Reference(ex-edd-by-id)
