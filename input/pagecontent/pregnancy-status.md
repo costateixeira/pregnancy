@@ -11,6 +11,31 @@ broader pregnancy care set is **out of scope of this iteration**, but the
 information model is designed so that it can be added later without redesign. See
 the [home page](index.html) for the full scope and roadmap.
 
+### The model: a Bundle of clinical observations
+
+Pregnancy status here is for **administrative sharing**, *not* clinical care. (For
+clinical care, the pregnancy is more commonly represented as a `Condition`.)
+
+The model is a single **`collection` Bundle** of `BeClinicalObservation`s — the
+[Pregnancy Status Bundle](StructureDefinition-be-pregnancy-status-bundle.html). It
+carries one pregnancy status observation (LOINC `82810-3`) that groups its detail
+observations (estimated date of delivery, expected number of children, optional end
+date) via `Observation.hasMember`, each detail identified by its own `.code`.
+
+**This Bundle is the conformance target.** Entries are distinguished by code, not by
+a profile per observation type.
+
+> **Demonstrative, temporary profiles.**
+>
+> The per-code Observation profiles in this IG are **illustrative only** and are
+> expected to be **removed in the federal guidance**.
+>
+> A federal layer cannot publish one profile per type of observation: there are far
+> too many `.code` values, spread across many clinical domains, to maintain a
+> StructureDefinition for each. Instead it standardises the generic
+> `BeClinicalObservation` and lets the **Bundle plus the codes** carry the specific
+> meaning.
+
 ### The information model
 
 Within the pregnancy-status scope, the IG distinguishes two related but different
@@ -19,7 +44,7 @@ concepts, each represented by a different FHIR resource type:
 - **Pregnancy status** — a *point-in-time clinical finding* ("is this person
   pregnant, and what is the status as of the observation date?"). Represented as an
   `Observation`, aligned with the IPS *Pregnancy status* observation. See
-  [BePregnancyStatusObservation](StructureDefinition-be-pregnancy-status-observation.html).
+  [BePregnancyStatusObservation](StructureDefinition-be-observation-pregnancy-status.html).
 - **The pregnancy itself** — the *longitudinal clinical episode* with an onset and
   actual end date. Represented as a `Condition`. The detail observations (due date,
   expected number of children, etc.) reference it — it is the observations that
@@ -76,8 +101,42 @@ The two links are independent and serve different purposes:
 > That identifier groups all the observations that belong to the same pregnancy,
 > without any `Condition` resource being exchanged. Later, when a `Condition`
 > resource does exist, the very same `focus` simply resolves to it (a literal
-> reference) — the observations themselves do not change.
+> reference) — the observations themselves do not need to change.
 
 <figure>
   {% include pregnancystatus.svg %}
 </figure>
+
+### Fetching the data (`_include` / `_revinclude`)
+
+Because the pregnancy status observation groups its detail observations via
+`hasMember` — and all observations of one pregnancy may share a pregnancy identifier
+on `focus` — the related resources can be retrieved together with `_include` /
+`_revinclude`.
+
+**Given a patient** — fetch the pregnancy status and its member observations:
+
+```
+GET [base]/Observation?subject=Patient/123&code=http://loinc.org|82810-3&_include=Observation:has-member
+```
+
+The match is the pregnancy status observation; `_include=Observation:has-member`
+pulls in the detail observations it groups. To return the observations *about* a
+patient from the other direction:
+
+```
+GET [base]/Patient/123?_revinclude=Observation:subject
+```
+
+**Given a pregnancy identifier** — fetch every observation tied to one pregnancy via
+the logical reference on `focus` (works today, with or without a `Condition`):
+
+```
+GET [base]/Observation?focus:identifier=https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/pregnancy|PREG-2026-0001&_include=Observation:has-member
+```
+
+Add `&_include=Observation:subject` to also pull in the patient.
+
+> **Note.** The recorder is carried in the `be-ext-recorder` extension, so it is not
+> retrievable through a standard `_include`; including it would require a custom
+> search parameter on that extension.

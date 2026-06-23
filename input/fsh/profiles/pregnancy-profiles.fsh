@@ -46,7 +46,13 @@ Profile:     BePregnancyStatusObservation
 Parent:      Observation
 Id:          be-observation-pregnancy-status
 Title:       "Pregnancy Status (Observation)"
-Description: "Current pregnancy status of a woman (e.g. pregnant, not pregnant).
+Description: "> **Demonstrative, temporary profile.**
+>
+> The model is the [Pregnancy Status Bundle](StructureDefinition-be-pregnancy-status-bundle.html) — a Bundle of `BeClinicalObservation`s keyed by `.code`. Profiles like this one are **illustrative only** and are expected to be **removed in the federal guidance**.
+>
+> A federal layer cannot publish one profile per type of observation: there are far too many `.code` values, spread across many clinical domains, to maintain a StructureDefinition for each. Instead it standardises the generic `BeClinicalObservation` and lets the **Bundle plus the codes** carry the specific meaning.
+
+Current pregnancy status of a woman (e.g. pregnant, not pregnant).
 Aligned with IPS `Observation-pregnancy-status-uv-ips`. May be tied to a
 pregnancy via `Observation.focus`. Per the IPS
 pattern, `hasMember` references the related EDD observation."
@@ -84,7 +90,13 @@ Profile:     BeEstimatedDateOfDeliveryObservation
 Parent:      Observation
 Id:          be-observation-pregnancy-edd
 Title:       "Estimated Date of Delivery (Observation)"
-Description: "Expected delivery date for a pregnancy, usually estimated from
+Description: "> **Demonstrative, temporary profile.**
+>
+> The model is the [Pregnancy Status Bundle](StructureDefinition-be-pregnancy-status-bundle.html) — a Bundle of `BeClinicalObservation`s keyed by `.code`. Profiles like this one are **illustrative only** and are expected to be **removed in the federal guidance**.
+>
+> A federal layer cannot publish one profile per type of observation: there are far too many `.code` values, spread across many clinical domains, to maintain a StructureDefinition for each. Instead it standardises the generic `BeClinicalObservation` and lets the **Bundle plus the codes** carry the specific meaning.
+
+Expected delivery date for a pregnancy, usually estimated from
 ultrasound. Aligned with IPS `Observation-pregnancy-edd-uv-ips`. May be tied to
 a pregnancy via `Observation.focus`."
 
@@ -109,7 +121,13 @@ Profile:     BeEndOfPregnancyDateObservation
 Parent:      Observation
 Id:          be-observation-pregnancy-end-date
 Title:       "End of Pregnancy Date (Observation)"
-Description: "Actual end date of a pregnancy. May be tied to a pregnancy via
+Description: "> **Demonstrative, temporary profile.**
+>
+> The model is the [Pregnancy Status Bundle](StructureDefinition-be-pregnancy-status-bundle.html) — a Bundle of `BeClinicalObservation`s keyed by `.code`. Profiles like this one are **illustrative only** and are expected to be **removed in the federal guidance**.
+>
+> A federal layer cannot publish one profile per type of observation: there are far too many `.code` values, spread across many clinical domains, to maintain a StructureDefinition for each. Instead it standardises the generic `BeClinicalObservation` and lets the **Bundle plus the codes** carry the specific meaning.
+
+Actual end date of a pregnancy. May be tied to a pregnancy via
 `Observation.focus`."
 
 // TODO: bind Observation.code to a Belgian/SNOMED value set for the
@@ -132,7 +150,13 @@ Profile:     BeExpectedNumberOfChildrenObservation
 Parent:      Observation
 Id:          be-observation-pregnancy-fetus-count
 Title:       "Expected Number of Children (Observation)"
-Description: "Expected number of children for a pregnancy (number of fetuses,
+Description: "> **Demonstrative, temporary profile.**
+>
+> The model is the [Pregnancy Status Bundle](StructureDefinition-be-pregnancy-status-bundle.html) — a Bundle of `BeClinicalObservation`s keyed by `.code`. Profiles like this one are **illustrative only** and are expected to be **removed in the federal guidance**.
+>
+> A federal layer cannot publish one profile per type of observation: there are far too many `.code` values, spread across many clinical domains, to maintain a StructureDefinition for each. Instead it standardises the generic `BeClinicalObservation` and lets the **Bundle plus the codes** carry the specific meaning.
+
+Expected number of children for a pregnancy (number of fetuses,
 usually determined by ultrasound). May be tied to a pregnancy via
 `Observation.focus`."
 
@@ -157,7 +181,13 @@ Profile:     BeNumberOfSilentBirthsObservation
 Parent:      Observation
 Id:          be-observation-pregnancy-silent-births
 Title:       "Number of Silent Births (Observation)"
-Description: "Number of fetal deaths in this delivery. Obligatory when the
+Description: "> **Demonstrative, temporary profile.**
+>
+> The model is the [Pregnancy Status Bundle](StructureDefinition-be-pregnancy-status-bundle.html) — a Bundle of `BeClinicalObservation`s keyed by `.code`. Profiles like this one are **illustrative only** and are expected to be **removed in the federal guidance**.
+>
+> A federal layer cannot publish one profile per type of observation: there are far too many `.code` values, spread across many clinical domains, to maintain a StructureDefinition for each. Instead it standardises the generic `BeClinicalObservation` and lets the **Bundle plus the codes** carry the specific meaning.
+
+Number of fetal deaths in this delivery. Obligatory when the
 pregnancy has ended. May be tied to a pregnancy via
 `Observation.focus`."
 
@@ -186,7 +216,13 @@ Profile:     BeNumberOfLiveBirthsObservation
 Parent:      Observation
 Id:          be-observation-pregnancy-live-births
 Title:       "Number of Live Births (Observation)"
-Description: "Number of alive births in this delivery. Obligatory when the
+Description: "> **Demonstrative, temporary profile.**
+>
+> The model is the [Pregnancy Status Bundle](StructureDefinition-be-pregnancy-status-bundle.html) — a Bundle of `BeClinicalObservation`s keyed by `.code`. Profiles like this one are **illustrative only** and are expected to be **removed in the federal guidance**.
+>
+> A federal layer cannot publish one profile per type of observation: there are far too many `.code` values, spread across many clinical domains, to maintain a StructureDefinition for each. Instead it standardises the generic `BeClinicalObservation` and lets the **Bundle plus the codes** carry the specific meaning.
+
+Number of alive births in this delivery. Obligatory when the
 pregnancy has ended. May be tied to a pregnancy via
 `Observation.focus`. **Out of scope of this iteration.**"
 

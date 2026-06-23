@@ -268,3 +268,9 @@ Description: "Summary Observation grouping its members via hasMember and tied to
 * hasMember[+] = Reference(ex-children-by-id)
 * focus.identifier.system = $PregnancyId
 * focus.identifier.value = "PREG-2026-0001"
+
+
+// NOTE: the example Bundle (BePregnancyStatusBundle) is provided as JSON in
+// input/examples/Bundle-ex-pregnancy-status-bundle.json. SUSHI cannot build an
+// inline-instance example for a Bundle whose entries are sliced by resource.code,
+// so the example lives as a predefined resource instead.
