@@ -1,0 +1,53 @@
+# (YAML view of the contained pregnancy-status example, for non-FHIR readers)
+# =========================================================================
+# One "pregnancy status" record that CARRIES its own detail facts inside it.
+# There is ONE generic record type ("Observation"); each fact is told apart by
+# its CODE, not by a separate template. Lines marked (required) must be present.
+# =========================================================================
+
+resourceType: Observation            # (required) the record type — always "Observation"
+id: ex-pregnancy-status-contained
+profile: be-pregnancy-status         # (required) says "this follows the pregnancy-status rules"
+
+# --- WHO and WHAT this top record is about ---------------------------------
+status: final                        # (required) the record is complete/confirmed
+code: "LOINC 82810-3 — Pregnancy status"   # (required) WHAT this record is: a pregnancy status
+subject: Patient/ex-pregnant-woman   # (required) WHO it is about (the woman)
+performer: Practitioner/ex-gynaecologist   # (required) WHO recorded it
+effectiveDateTime: "2026-02-10"      # when the status was established
+value: "SNOMED 77386006 — Pregnant (finding)"  # (required) the answer: pregnant / not pregnant
+identifier:
+  system: ".../sid/observation"
+  value: status-contained            # a business id for this record
+
+# --- THE DETAIL FACTS, carried INSIDE this record ("contained") ------------
+# Each detail is the same generic record, identified by its own CODE.
+# At most ONE of each kind is allowed (enforced by the rules on "contained").
+contained:
+
+  - resourceType: Observation
+    id: edd
+    profile: be-clinical-observation        # generic record — NOT a special "EDD profile"
+    status: final                           # (required)
+    code: "LOINC 11778-8 — Delivery date Estimated"   # (required) WHAT: estimated delivery date
+    subject: Patient/ex-pregnant-woman      # (required)
+    performer: Practitioner/ex-gynaecologist
+    effectiveDateTime: "2026-02-10"
+    value: "2026-09-15"                     # (required) the estimated delivery date
+
+  - resourceType: Observation
+    id: children
+    profile: be-clinical-observation        # generic record — NOT a special "number-of-children profile"
+    status: final                           # (required)
+    code: "LOINC 11878-6 — Number of fetuses by US"   # (required) WHAT: expected number of children
+    subject: Patient/ex-pregnant-woman      # (required)
+    performer: Practitioner/ex-gynaecologist
+    effectiveDateTime: "2026-02-10"
+    value: 1                                # (required) one child expected
+
+# --- HOW the top record points to its detail facts -------------------------
+# "hasMember" just lists the details that belong to this status (the "#" means
+# "the contained item with that id, above").
+hasMember:
+  - "#edd"        # the estimated-delivery-date fact
+  - "#children"   # the number-of-children fact

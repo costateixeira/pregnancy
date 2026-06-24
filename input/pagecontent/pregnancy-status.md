@@ -11,19 +11,22 @@ broader pregnancy care set is **out of scope of this iteration**, but the
 information model is designed so that it can be added later without redesign. See
 the [home page](index.html) for the full scope and roadmap.
 
-### The model: a Bundle of clinical observations
+### The model: a pregnancy status Observation containing its details
 
 Pregnancy status here is for **administrative sharing**, *not* clinical care. (For
 clinical care, the pregnancy is more commonly represented as a `Condition`.)
 
-The model is a single **`collection` Bundle** of `BeClinicalObservation`s — the
-[Pregnancy Status Bundle](StructureDefinition-be-pregnancy-status-bundle.html). It
-carries one pregnancy status observation (LOINC `82810-3`) that groups its detail
-observations (estimated date of delivery, expected number of children, optional end
-date) via `Observation.hasMember`, each detail identified by its own `.code`.
+The model is a single **pregnancy status `Observation`** (a `BeClinicalObservation`,
+LOINC `82810-3`) that **contains** its detail observations and groups them via
+`Observation.hasMember` — the
+[Pregnancy Status profile](StructureDefinition-be-pregnancy-status.html). The
+contained details — estimated date of delivery (`11778-8`, `dateTime`), expected
+number of children (`11878-6`, `integer`) and an optional end-of-pregnancy date
+(`289251005`, `dateTime`) — are constrained directly on the container by slicing
+`contained` by type and then by code, each with a **fixed code** and value type.
 
-**This Bundle is the conformance target.** Entries are distinguished by code, not by
-a profile per observation type.
+**The container is the conformance target.** The contained observations are
+distinguished by code, not by a profile per observation type.
 
 > **Demonstrative, temporary profiles.**
 >
@@ -33,8 +36,8 @@ a profile per observation type.
 > A federal layer cannot publish one profile per type of observation: there are far
 > too many `.code` values, spread across many clinical domains, to maintain a
 > StructureDefinition for each. Instead it standardises the generic
-> `BeClinicalObservation` and lets the **Bundle plus the codes** carry the specific
-> meaning.
+> `BeClinicalObservation` and lets the **container plus the codes** carry the
+> specific meaning.
 
 ### The information model
 
@@ -107,36 +110,26 @@ The two links are independent and serve different purposes:
   {% include pregnancystatus.svg %}
 </figure>
 
-### Fetching the data (`_include` / `_revinclude`)
+### Fetching the data
 
-Because the pregnancy status observation groups its detail observations via
-`hasMember` — and all observations of one pregnancy may share a pregnancy identifier
-on `focus` — the related resources can be retrieved together with `_include` /
-`_revinclude`.
+Because the pregnancy status `Observation` **contains** its detail observations,
+fetching the status returns the details **inline** — no `_include` is needed for
+them.
 
-**Given a patient** — fetch the pregnancy status and its member observations:
+**Given a patient** — fetch the pregnancy status (the EDD, number of children and
+end date come contained within it):
 
 ```
-GET [base]/Observation?subject=Patient/123&code=http://loinc.org|82810-3&_include=Observation:has-member
+GET [base]/Observation?subject=Patient/123&code=http://loinc.org|82810-3
 ```
 
-The match is the pregnancy status observation; `_include=Observation:has-member`
-pulls in the detail observations it groups. To return the observations *about* a
-patient from the other direction:
+To list the pregnancy observations *about* a patient from the other direction:
 
 ```
 GET [base]/Patient/123?_revinclude=Observation:subject
 ```
 
-**Given a pregnancy identifier** — fetch every observation tied to one pregnancy via
-the logical reference on `focus` (works today, with or without a `Condition`):
-
-```
-GET [base]/Observation?focus:identifier=https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/pregnancy|PREG-2026-0001&_include=Observation:has-member
-```
-
-Add `&_include=Observation:subject` to also pull in the patient.
-
-> **Note.** The recorder is carried in the `be-ext-recorder` extension, so it is not
-> retrievable through a standard `_include`; including it would require a custom
-> search parameter on that extension.
+> **Note.** When the pregnancy is also represented as a `Condition` (clinical-care
+> scope), the observations link to it via `Observation.focus` — a literal reference
+> or a logical reference (a unique pregnancy identifier). See the framing discussion
+> above. The recorder is carried in the `be-ext-recorder` extension.
