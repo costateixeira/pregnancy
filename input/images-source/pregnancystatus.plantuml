@@ -33,7 +33,7 @@ class "**Pregnancy**\n(Condition)" as PREG #ffe6b5 {
 class "**PregnancyStatus**\n(ClinicalObservation)" as PSO {
 |_ patient 1..1 <<Ref>>
 '|_ pregnancyIdentifier 1..* <<Id>>
-|_ author 1..1 <<Ref>>
+|_ recorder 1..1 <<Ref>>
 |_ recorded_date 1..1 <<date>>
 |_ status 1..1 <<code>>
 |_ value : pregnancyStatus 1..1 <<code>>   
