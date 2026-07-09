@@ -1,0 +1,35 @@
+[{
+  "id" : "be.fhir.pregnancy",
+  "type" : "ImplementationGuide",
+  "url" : "https://www.ehealth.fgov.be/standards/fhir/pregnancy/ImplementationGuide/be.fhir.pregnancy",
+  "version" : "0.1.0",
+  "name" : "BeFhirPregnancy"
+},
+{
+  "id" : "PregnancyStatusDataSet",
+  "type" : "StructureDefinition",
+  "url" : "https://www.ehealth.fgov.be/standards/fhir/pregnancy/StructureDefinition/PregnancyStatusDataSet",
+  "version" : "0.1.0",
+  "name" : "PregnancyStatusDataSet"
+},
+{
+  "id" : "be-pregnancy-condition",
+  "type" : "StructureDefinition",
+  "url" : "https://www.ehealth.fgov.be/standards/fhir/pregnancy/StructureDefinition/be-pregnancy-condition",
+  "version" : "0.1.0",
+  "name" : "BePregnancyCondition"
+},
+{
+  "id" : "be-pregnancy-status",
+  "type" : "StructureDefinition",
+  "url" : "https://www.ehealth.fgov.be/standards/fhir/pregnancy/StructureDefinition/be-pregnancy-status",
+  "version" : "0.1.0",
+  "name" : "BePregnancyStatus"
+},
+{
+  "id" : "be-pregnancy-status-vs",
+  "type" : "ValueSet",
+  "url" : "https://www.ehealth.fgov.be/standards/fhir/pregnancy/ValueSet/be-pregnancy-status-vs",
+  "version" : "0.1.0",
+  "name" : "BePregnancyStatusVS"
+}]

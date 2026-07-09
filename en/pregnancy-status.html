@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Pregnancy Status - Belgian Pregnancy Implementation Guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link rel="stylesheet" href="fhir.css"/>
+
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-fhir.css"/>
+
+      <!-- Project extras -->
+    <link rel="stylesheet" href="assets/css/pygments-manni.css"/>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css"/>
+  	<link rel="stylesheet" href="assets/css/prism.css"/>
+    <link rel="stylesheet" href="assets/css/project.css"/>
+  	<link rel="stylesheet" href="assets/css/cqf.css"/>
+      <!-- Placeholder for child template CSS declarations -->
+<link rel="stylesheet" href="assets/css/hl7-be.css"/>
+  <!-- Placeholder for child template CSS declarations -->
+  <!-- Departement Zorg -->
+  <!-- draft -->
+
+<link rel="stylesheet" href="assets/css/colors.css"/>
+
+<link rel="stylesheet" href="assets/css/lforms.min.css"/>
+
+
+    <script src="fhir-table-scripts.js" type="text/javascript"> </script>
+    <script src="assets/js/direction-management.js" type="text/javascript"> </script>
+
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- [if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif] -->
+
+      <!-- Favicons -->
+    <link sizes="144x144" rel="fhir-logo" href="assets/ico/icon-fhir-144.png"/>
+    <link sizes="114x114" rel="fhir-logo" href="assets/ico/icon-fhir-114.png"/>
+    <link sizes="72x72" rel="fhir-logo" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js" type="text/javascript"></script>
+	  <script src="assets/js/prism-fhirpath.js" type="text/javascript"></script>
+	  <script src="assets/js/prism-cql.js" type="text/javascript"></script>
+    <script src="assets/js/mermaid.js" type="text/javascript"></script>
+    <script src="assets/js/mermaid-init.js" type="text/javascript"></script>
+    <style type="text/css">h2{--heading-prefix:"2"}
+    h3,h4,h5,h6{--heading-prefix:"2"}</style>
+    <div id="segment-header" class="segment">    <!-- segment-header -->
+      <div class="container">    <!-- container -->
+
+          <!-- Placeholder for child template header declarations -->
+
+        
+  <!-- Departement Zorg -->
+  <!-- draft -->
+
+<div id="ig-nav">
+  <a no-external="true" id="hl7-logo" href="https://hl7belgium.org">
+    <img src="assets/images/hl7be-logo-header.png" alt="HL7 Belgium" height="65"/>
+  </a>
+</div>
+<div id="fhir-nav">
+  <a no-external="true" id="fhir-logo" href="http://hl7.org/fhir"><img src="assets/images/fhir-logo-www.png" alt="Visit the FHIR website" height="50"/> </a>
+</div>
+<div id="ig-search">
+  <a no-external="true" id="hl7-search-lnk" href="http://hl7.org/fhir/search.cfm"><img src="assets/images/search.png" alt="Search FHIR"/></a>
+</div>
+
+
+
+        <div id="ig-status" data-fhir="generated">
+          <p><span style="font-size:12pt;font-weight:bold">Belgian Pregnancy Implementation Guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img src="../assets/images/bel.svg" alt="Belgium flag" title="Belgium" height="16"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div>   <!-- /container -->
+    </div>    <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment" data-fhir="generated">    <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">    <!-- container -->
+          <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+            <!-- status-bar -->
+          <div class="container">
+
+            <button data-target=".navbar-inverse-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a href="http://hl7.org/fhir/R4/index.html" class="navbar-brand hidden">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml -->
+
+<ul class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="pregnancy-status.html">Pregnancy status</a>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>    <!-- /.nav-collapse -->
+
+              
+
+          </div>    <!-- /.container -->
+        </nav>    <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-navbar -->
+      <!-- status-bar -->
+
+    <div id="segment-breadcrumb" class="segment" data-fhir="generated">    <!-- segment-breadcrumb -->
+      <div class="container">    <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href="toc.html"><b>Table of Contents</b></a></li><li><b>Pregnancy Status</b></li>
+
+        </ul>
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">    <!-- segment-content -->
+      <div class="container">    <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+    <!-- ReleaseHeader --><p id="publish-box">Belgian Pregnancy Implementation Guide, published by Departement Zorg. This guide is not an authorized publication; it is the continuous build for version 0.1.0  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href="https://github.com/costateixeira/pregnancy/tree/main">https://github.com/costateixeira/pregnancy/tree/main</a> and changes regularly. See the <a href="https://www.ehealth.fgov.be/standards/fhir/pregnancy/history.html">Directory of published versions</a><br/><span data-smart-ci-extra="1" style="font-size:.85em;">Built from commit <a href="https://github.com/costateixeira/pregnancy/commit/1da46154f4f8323ee294bfb817f76c8377e66019"><code>1da46154</code></a>.</span></p>  <!-- EndReleaseHeader -->
+  <h2>Pregnancy Status</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>  <!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#the-model-a-pregnancy-status-observation-containing-its-details" id="markdown-toc-the-model-a-pregnancy-status-observation-containing-its-details">The model: a pregnancy status Observation containing its details</a></li>
+  <li><a href="#the-information-model" id="markdown-toc-the-information-model">The information model</a></li>
+  <li><a href="#a-robust-core-with-two-framings-over-it" id="markdown-toc-a-robust-core-with-two-framings-over-it">A robust core, with two framings over it</a></li>
+  <li><a href="#fetching-the-data" id="markdown-toc-fetching-the-data">Fetching the data</a></li>
+</ul>
+
+</div>
+<p>Pregnancy and birth involve a broad set of administrative and clinical data,
+contributed and consumed by many initiatives and stakeholders over the full course
+of care — from the first confirmation of a pregnancy, through follow-up and
+screening, to birth and post-natal follow-up of mother and child (eBirth, RIZIV,
+Born in Belgium, Zoet Zwanger, PALS, the <em>moeder/kind boekje</em>, …).</p>
+
+<p>The <strong>pregnancy status</strong> is a minimal, well-bounded data set, sufficient to support
+business cases such as entitlement to the <em>Groeipakket</em>, the on-line pregnancy
+certificate, and consultation by the woman and her caregivers. The rest of the
+broader pregnancy care set is <strong>out of scope of this iteration</strong>, but the
+information model is designed so that it can be added later without redesign. See
+the <a href="index.html">home page</a> for the full scope and roadmap.</p>
+
+<h3 id="the-model-a-pregnancy-status-observation-containing-its-details">The model: a pregnancy status Observation containing its details</h3>
+
+<p>Pregnancy status here is for <strong>administrative sharing</strong>, <em>not</em> clinical care. (For
+clinical care, the pregnancy is more commonly represented as a <code class="language-plaintext highlighter-rouge">Condition</code>.)</p>
+
+<p>The model is a single <strong>pregnancy status <code class="language-plaintext highlighter-rouge">Observation</code></strong> (a <code class="language-plaintext highlighter-rouge">BeClinicalObservation</code>,
+LOINC <code class="language-plaintext highlighter-rouge">82810-3</code>) that <strong>contains</strong> its detail observations and groups them via
+<code class="language-plaintext highlighter-rouge">Observation.hasMember</code> — the
+<a href="StructureDefinition-be-pregnancy-status.html">Pregnancy Status profile</a>. The
+contained details — estimated date of delivery (<code class="language-plaintext highlighter-rouge">11778-8</code>, <code class="language-plaintext highlighter-rouge">dateTime</code>), expected
+number of children (<code class="language-plaintext highlighter-rouge">11878-6</code>, <code class="language-plaintext highlighter-rouge">integer</code>) and an optional end-of-pregnancy date
+(<code class="language-plaintext highlighter-rouge">289251005</code>, <code class="language-plaintext highlighter-rouge">dateTime</code>) — are constrained directly on the container by slicing
+<code class="language-plaintext highlighter-rouge">contained</code> by type and then by code, each with a <strong>fixed code</strong> and value type.</p>
+
+<p><strong>The container is the conformance target.</strong> The contained observations are
+distinguished by code, not by a profile per observation type.</p>
+
+<blockquote>
+  <p><strong>Demonstrative, temporary profiles.</strong></p>
+
+  <p>The per-code Observation profiles in this IG are <strong>illustrative only</strong> and are
+expected to be <strong>removed in the federal guidance</strong>.</p>
+
+  <p>A federal layer cannot publish one profile per type of observation: there are far
+too many <code class="language-plaintext highlighter-rouge">.code</code> values, spread across many clinical domains, to maintain a
+StructureDefinition for each. Instead it standardises the generic
+<code class="language-plaintext highlighter-rouge">BeClinicalObservation</code> and lets the <strong>container plus the codes</strong> carry the
+specific meaning.</p>
+</blockquote>
+
+<h3 id="the-information-model">The information model</h3>
+
+<p>Within the pregnancy-status scope, the IG distinguishes two related but different
+concepts, each represented by a different FHIR resource type:</p>
+
+<ul>
+  <li><a name="l428">​</a><strong>Pregnancy status</strong> — a <em>point-in-time clinical finding</em> (“is this person
+pregnant, and what is the status as of the observation date?”). Represented as an
+<code class="language-plaintext highlighter-rouge">Observation</code>, aligned with the IPS <em>Pregnancy status</em> observation. See
+<a href="StructureDefinition-be-observation-pregnancy-status.html">BePregnancyStatusObservation</a>.</li>
+  <li><strong>The pregnancy itself</strong> — the <em>longitudinal clinical episode</em> with an onset and
+actual end date. Represented as a <code class="language-plaintext highlighter-rouge">Condition</code>. The detail observations (due date,
+expected number of children, etc.) reference it — it is the observations that
+point to the <code class="language-plaintext highlighter-rouge">Condition</code>, not the reverse. See
+<a href="StructureDefinition-be-pregnancy-condition.html">BePregnancyCondition</a>.</li>
+</ul>
+
+<p>In both cases the supporting detail elements (expected date of delivery, expected
+number of children, actual end date) are carried as separate
+<code class="language-plaintext highlighter-rouge">BeClinicalObservation</code>s. The shared, scope-independent information model is the
+logical model
+<a href="StructureDefinition-PregnancyStatusDataSet.html">PregnancyStatusDataSet</a>.</p>
+
+<h3 id="a-robust-core-with-two-framings-over-it">A robust core, with two framings over it</h3>
+
+<p>The <strong>detail observations are the robust core</strong> of the data — they carry the actual
+values and stay unchanged regardless of how the pregnancy as a whole is represented.
+The <code class="language-plaintext highlighter-rouge">PregnancyStatus</code> Observation and the <code class="language-plaintext highlighter-rouge">Pregnancy</code> <code class="language-plaintext highlighter-rouge">Condition</code> are then two
+<strong>framings</strong> over that core:</p>
+
+<ul>
+  <li>the <strong><code class="language-plaintext highlighter-rouge">PregnancyStatus</code> Observation</strong> asserts the coded finding (pregnant / not
+pregnant) and groups the details — the IPS-aligned summary;</li>
+  <li>the <strong><code class="language-plaintext highlighter-rouge">Pregnancy</code> <code class="language-plaintext highlighter-rouge">Condition</code></strong> represents the clinical episode (onset, status,
+end).</li>
+</ul>
+
+<p>Whichever framing you do not currently use is an <strong>optional add-on</strong> that can be
+added later, derived from the same core, without touching the details:</p>
+
+<ul>
+  <li>With <strong>no <code class="language-plaintext highlighter-rouge">Condition</code></strong> (the current scope), the <code class="language-plaintext highlighter-rouge">PregnancyStatus</code> Observation is
+the anchor — it is the only resource asserting the finding and grouping the
+details. The <code class="language-plaintext highlighter-rouge">Condition</code> is the future add-on.</li>
+  <li>Once a <strong><code class="language-plaintext highlighter-rouge">Condition</code></strong> exists, it already asserts “pregnant” and anchors the
+details (via <code class="language-plaintext highlighter-rouge">focus</code>); the <code class="language-plaintext highlighter-rouge">PregnancyStatus</code> Observation then becomes an optional,
+IPS-compatible <strong>summary</strong> projected over the same data.</li>
+</ul>
+
+<p>The diagram below shows these two framings and how the design is <strong>incremental</strong>: a
+project can start with the <code class="language-plaintext highlighter-rouge">PregnancyStatus</code> Observation and its member
+observations, and add the <code class="language-plaintext highlighter-rouge">Pregnancy</code> Condition later with no redesign of the
+existing observations.</p>
+
+<p>The two links are independent and serve different purposes:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Observation.hasMember</code> groups the member observations under the <code class="language-plaintext highlighter-rouge">PregnancyStatus</code>
+Observation (parent → children). This is internal to the observations and has
+<strong>nothing to do with the <code class="language-plaintext highlighter-rouge">Condition</code></strong>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Observation.focus</code> is how an observation is tied to the pregnancy <code class="language-plaintext highlighter-rouge">Condition</code>.
+<strong>Both</strong> the <code class="language-plaintext highlighter-rouge">PregnancyStatus</code> Observation and its member observations point to
+the <code class="language-plaintext highlighter-rouge">Condition</code> this way, so any observation that is part of a pregnancy is known.
+This <code class="language-plaintext highlighter-rouge">focus</code> can be a <strong>literal reference</strong> to a <code class="language-plaintext highlighter-rouge">Condition</code> resource <strong>or a
+logical reference</strong> (<code class="language-plaintext highlighter-rouge">Reference.identifier</code>) — that is, <strong>a unique identifier of
+the pregnancy</strong>.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note.</strong> While there is no <code class="language-plaintext highlighter-rouge">BePregnancyCondition</code> resource to point at, the
+<code class="language-plaintext highlighter-rouge">focus</code> can already carry a <strong>logical reference — a unique pregnancy identifier</strong>.
+That identifier groups all the observations that belong to the same pregnancy,
+without any <code class="language-plaintext highlighter-rouge">Condition</code> resource being exchanged. Later, when a <code class="language-plaintext highlighter-rouge">Condition</code>
+resource does exist, the very same <code class="language-plaintext highlighter-rouge">focus</code> simply resolves to it (a literal
+reference) — the observations themselves do not need to change.</p>
+</blockquote>
+
+<figure>
+    <!-- ?xml version="1.0" encoding="us-ascii" standalone="no"? --><svg xmlns="http://www.w3.org/2000/svg" contentStyleType="text/css" viewBox="0 0 999 862" zoomAndPan="magnify" preserveAspectRatio="none" width="999px" xmlns:xlink="http://www.w3.org/1999/xlink" style="width:999px;height:862px;background:#FFFFFF;" version="1.1" height="862px"><defs></defs><g>  <!-- class PREG --><g id="elem_PREG"><rect codeLine="20" rx="2.5" ry="2.5" width="438" x="356" y="7" style="stroke:#181818;stroke-width:0.5;" id="PREG" fill="#FFE6B5" height="184.9688"></rect><text font-weight="bold" lengthAdjust="spacing" x="533" font-size="14" textLength="84" y="24.9951" font-family="sans-serif" fill="#000000">Pregnancy</text><text lengthAdjust="spacing" x="537" font-size="14" textLength="76" y="41.292" font-family="sans-serif" fill="#000000">(Condition)</text><line y1="49.5938" x1="357" y2="49.5938" style="stroke:#181818;stroke-width:0.5;" x2="793"></line><text lengthAdjust="spacing" x="378" font-size="14" textLength="123" y="72.5889" font-family="sans-serif" fill="#000000">patient 1..1 «Ref»</text><text lengthAdjust="spacing" x="378" font-size="14" textLength="121" y="88.8857" font-family="sans-serif" fill="#000000">identifier 1..* «Id»</text><text lengthAdjust="spacing" x="378" font-size="14" textLength="120" y="105.1826" font-family="sans-serif" fill="#000000">author 1..1 «Ref»</text><text lengthAdjust="spacing" x="378" font-size="14" textLength="179" y="121.4795" font-family="sans-serif" fill="#000000">recordedDate 1..1 «date»</text><text lengthAdjust="spacing" x="378" font-size="14" textLength="306" y="137.7764" font-family="sans-serif" fill="#000000">clinicalStatus 1..1 «code»  (active | resolved)</text><text lengthAdjust="spacing" x="378" font-size="14" textLength="243" y="154.0732" font-family="sans-serif" fill="#000000">code 1..1 «code»            (pregnant)</text><text lengthAdjust="spacing" x="378" font-size="14" textLength="123" y="170.3701" font-family="sans-serif" fill="#000000">onset 0..1 «date»</text><text lengthAdjust="spacing" x="378" font-size="14" textLength="416" y="186.667" font-family="sans-serif" fill="#000000">abatement 0..1 «date»       (= actualDateOfEndOfPregnancy)</text><rect width="2" x="371" y="66.7422" style="stroke:#000000;stroke-width:1.0;" fill="#FFE6B5" height="2"></rect><line y1="67.7422" x1="364" y2="67.7422" style="stroke:#000000;stroke-width:1.0;" x2="372"></line><line y1="59.5938" x1="364" y2="67.7422" style="stroke:#000000;stroke-width:1.0;" x2="364"></line><rect width="2" x="371" y="83.0391" style="stroke:#000000;stroke-width:1.0;" fill="#FFE6B5" height="2"></rect><line y1="84.0391" x1="364" y2="84.0391" style="stroke:#000000;stroke-width:1.0;" x2="372"></line><line y1="67.7422" x1="364" y2="84.0391" style="stroke:#000000;stroke-width:1.0;" x2="364"></line><rect width="2" x="371" y="99.3359" style="stroke:#000000;stroke-width:1.0;" fill="#FFE6B5" height="2"></rect><line y1="100.3359" x1="364" y2="100.3359" style="stroke:#000000;stroke-width:1.0;" x2="372"></line><line y1="84.0391" x1="364" y2="100.3359" style="stroke:#000000;stroke-width:1.0;" x2="364"></line><rect width="2" x="371" y="115.6328" style="stroke:#000000;stroke-width:1.0;" fill="#FFE6B5" height="2"></rect><line y1="116.6328" x1="364" y2="116.6328" style="stroke:#000000;stroke-width:1.0;" x2="372"></line><line y1="100.3359" x1="364" y2="116.6328" style="stroke:#000000;stroke-width:1.0;" x2="364"></line><rect width="2" x="371" y="131.9297" style="stroke:#000000;stroke-width:1.0;" fill="#FFE6B5" height="2"></rect><line y1="132.9297" x1="364" y2="132.9297" style="stroke:#000000;stroke-width:1.0;" x2="372"></line><line y1="116.6328" x1="364" y2="132.9297" style="stroke:#000000;stroke-width:1.0;" x2="364"></line><rect width="2" x="371" y="148.2266" style="stroke:#000000;stroke-width:1.0;" fill="#FFE6B5" height="2"></rect><line y1="149.2266" x1="364" y2="149.2266" style="stroke:#000000;stroke-width:1.0;" x2="372"></line><line y1="132.9297" x1="364" y2="149.2266" style="stroke:#000000;stroke-width:1.0;" x2="364"></line><rect width="2" x="371" y="164.5234" style="stroke:#000000;stroke-width:1.0;" fill="#FFE6B5" height="2"></rect><line y1="165.5234" x1="364" y2="165.5234" style="stroke:#000000;stroke-width:1.0;" x2="372"></line><line y1="149.2266" x1="364" y2="165.5234" style="stroke:#000000;stroke-width:1.0;" x2="364"></line><rect width="2" x="371" y="180.8203" style="stroke:#000000;stroke-width:1.0;" fill="#FFE6B5" height="2"></rect><line y1="181.8203" x1="364" y2="181.8203" style="stroke:#000000;stroke-width:1.0;" x2="372"></line><line y1="165.5234" x1="364" y2="181.8203" style="stroke:#000000;stroke-width:1.0;" x2="364"></line></g>  <!-- class PSO --><g id="elem_PSO"><rect codeLine="32" rx="2.5" ry="2.5" width="287" x="431.5" y="401" style="stroke:#181818;stroke-width:0.5;" id="PSO" fill="#B5E8F7" height="136.0781"></rect><text font-weight="bold" lengthAdjust="spacing" x="508" font-size="14" textLength="134" y="418.9951" font-family="sans-serif" fill="#000000">PregnancyStatus</text><text lengthAdjust="spacing" x="505" font-size="14" textLength="140" y="435.292" font-family="sans-serif" fill="#000000">(ClinicalObservation)</text><line y1="443.5938" x1="432.5" y2="443.5938" style="stroke:#181818;stroke-width:0.5;" x2="717.5"></line><text lengthAdjust="spacing" x="453.5" font-size="14" textLength="123" y="466.5889" font-family="sans-serif" fill="#000000">patient 1..1 «Ref»</text><text lengthAdjust="spacing" x="453.5" font-size="14" textLength="134" y="482.8857" font-family="sans-serif" fill="#000000">recorder 1..1 «Ref»</text><text lengthAdjust="spacing" x="453.5" font-size="14" textLength="184" y="499.1826" font-family="sans-serif" fill="#000000">recorded_date 1..1 «date»</text><text lengthAdjust="spacing" x="453.5" font-size="14" textLength="130" y="515.4795" font-family="sans-serif" fill="#000000">status 1..1 «code»</text><text lengthAdjust="spacing" x="453.5" font-size="14" textLength="253" y="531.7764" font-family="sans-serif" fill="#000000">value : pregnancyStatus 1..1 «code»</text><rect width="2" x="446.5" y="460.7422" style="stroke:#000000;stroke-width:1.0;" fill="#B5E8F7" height="2"></rect><line y1="461.7422" x1="439.5" y2="461.7422" style="stroke:#000000;stroke-width:1.0;" x2="447.5"></line><line y1="453.5938" x1="439.5" y2="461.7422" style="stroke:#000000;stroke-width:1.0;" x2="439.5"></line><rect width="2" x="446.5" y="477.0391" style="stroke:#000000;stroke-width:1.0;" fill="#B5E8F7" height="2"></rect><line y1="478.0391" x1="439.5" y2="478.0391" style="stroke:#000000;stroke-width:1.0;" x2="447.5"></line><line y1="461.7422" x1="439.5" y2="478.0391" style="stroke:#000000;stroke-width:1.0;" x2="439.5"></line><rect width="2" x="446.5" y="493.3359" style="stroke:#000000;stroke-width:1.0;" fill="#B5E8F7" height="2"></rect><line y1="494.3359" x1="439.5" y2="494.3359" style="stroke:#000000;stroke-width:1.0;" x2="447.5"></line><line y1="478.0391" x1="439.5" y2="494.3359" style="stroke:#000000;stroke-width:1.0;" x2="439.5"></line><rect width="2" x="446.5" y="509.6328" style="stroke:#000000;stroke-width:1.0;" fill="#B5E8F7" height="2"></rect><line y1="510.6328" x1="439.5" y2="510.6328" style="stroke:#000000;stroke-width:1.0;" x2="447.5"></line><line y1="494.3359" x1="439.5" y2="510.6328" style="stroke:#000000;stroke-width:1.0;" x2="439.5"></line><rect width="2" x="446.5" y="525.9297" style="stroke:#000000;stroke-width:1.0;" fill="#B5E8F7" height="2"></rect><line y1="526.9297" x1="439.5" y2="526.9297" style="stroke:#000000;stroke-width:1.0;" x2="447.5"></line><line y1="510.6328" x1="439.5" y2="526.9297" style="stroke:#000000;stroke-width:1.0;" x2="439.5"></line></g>  <!-- class edd --><g id="elem_edd"><rect codeLine="44" rx="2.5" ry="2.5" width="198" x="476" y="269" style="stroke:#181818;stroke-width:0.5;" id="edd" fill="#B5E8F7" height="70.8906"></rect><text font-weight="bold" lengthAdjust="spacing" x="479" font-size="14" textLength="192" y="286.9951" font-family="sans-serif" fill="#000000">expectedDateOfDelivery</text><text lengthAdjust="spacing" x="505" font-size="14" textLength="140" y="303.292" font-family="sans-serif" fill="#000000">(ClinicalObservation)</text><line y1="311.5938" x1="477" y2="311.5938" style="stroke:#181818;stroke-width:0.5;" x2="673"></line><text lengthAdjust="spacing" x="498" font-size="14" textLength="119" y="334.5889" font-family="sans-serif" fill="#000000">value 1..1 «date»</text><rect width="2" x="491" y="328.7422" style="stroke:#000000;stroke-width:1.0;" fill="#B5E8F7" height="2"></rect><line y1="329.7422" x1="484" y2="329.7422" style="stroke:#000000;stroke-width:1.0;" x2="492"></line><line y1="321.5938" x1="484" y2="329.7422" style="stroke:#000000;stroke-width:1.0;" x2="484"></line></g>  <!-- class enc --><g id="elem_enc"><rect codeLine="49" rx="2.5" ry="2.5" width="226" x="215" y="269" style="stroke:#181818;stroke-width:0.5;" id="enc" fill="#B5E8F7" height="70.8906"></rect><text font-weight="bold" lengthAdjust="spacing" x="218" font-size="14" textLength="220" y="286.9951" font-family="sans-serif" fill="#000000">expectedNumberOfChildren</text><text lengthAdjust="spacing" x="258" font-size="14" textLength="140" y="303.292" font-family="sans-serif" fill="#000000">(ClinicalObservation)</text><line y1="311.5938" x1="216" y2="311.5938" style="stroke:#181818;stroke-width:0.5;" x2="440"></line><text lengthAdjust="spacing" x="237" font-size="14" textLength="137" y="334.5889" font-family="sans-serif" fill="#000000">value 1..1 «integer»</text><rect width="2" x="230" y="328.7422" style="stroke:#000000;stroke-width:1.0;" fill="#B5E8F7" height="2"></rect><line y1="329.7422" x1="223" y2="329.7422" style="stroke:#000000;stroke-width:1.0;" x2="231"></line><line y1="321.5938" x1="223" y2="329.7422" style="stroke:#000000;stroke-width:1.0;" x2="223"></line></g>  <!-- class ade --><g id="elem_ade"><rect codeLine="54" rx="2.5" ry="2.5" width="238" x="754" y="433.5" style="stroke:#181818;stroke-width:0.5;" id="ade" fill="#B5E8F7" height="70.8906"></rect><text font-weight="bold" lengthAdjust="spacing" x="757" font-size="14" textLength="232" y="451.4951" font-family="sans-serif" fill="#000000">actualDateOfEndOfPregnancy</text><text lengthAdjust="spacing" x="803" font-size="14" textLength="140" y="467.792" font-family="sans-serif" fill="#000000">(ClinicalObservation)</text><line y1="476.0938" x1="755" y2="476.0938" style="stroke:#181818;stroke-width:0.5;" x2="991"></line><text lengthAdjust="spacing" x="776" font-size="14" textLength="119" y="499.0889" font-family="sans-serif" fill="#000000">value 1..1 «date»</text><rect width="2" x="769" y="493.2422" style="stroke:#000000;stroke-width:1.0;" fill="#B5E8F7" height="2"></rect><line y1="494.2422" x1="762" y2="494.2422" style="stroke:#000000;stroke-width:1.0;" x2="770"></line><line y1="486.0938" x1="762" y2="494.2422" style="stroke:#000000;stroke-width:1.0;" x2="762"></line></g><g id="elem_GMN18"><path d="M63,72 L63,127.3984 A0,0 0 0 0 63,127.3984 L321,127.3984 A0,0 0 0 0 321,127.3984 L321,103.5 L355.76,99.5 L321,95.5 L321,82 L311,72 L63,72 A0,0 0 0 0 63,72 " style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD"></path><path d="M311,72 L311,82 L321,82 L311,72 " style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD"></path><text font-weight="bold" lengthAdjust="spacing" x="69" font-size="13" textLength="76" y="89.0669" font-family="sans-serif" fill="#000000">Full Scope</text><text lengthAdjust="spacing" x="149" font-size="13" textLength="78" y="89.0669" font-family="sans-serif" fill="#000000">- we use the</text><text font-weight="bold" lengthAdjust="spacing" x="231" font-size="13" textLength="70" y="89.0669" font-family="sans-serif" fill="#000000">Condition</text><text lengthAdjust="spacing" x="69" font-size="13" textLength="237" y="104.1997" font-family="sans-serif" fill="#000000">(the pregnancy as a clinical episode),</text><text lengthAdjust="spacing" x="69" font-size="13" textLength="210" y="119.3325" font-family="sans-serif" fill="#000000">as a context and "parent" object.</text></g><g id="elem_GMN21"><path d="M6,433.5 L6,504.0313 A0,0 0 0 0 6,504.0313 L396,504.0313 A0,0 0 0 0 396,504.0313 L396,473 L431.34,469 L396,465 L396,443.5 L386,433.5 L6,433.5 A0,0 0 0 0 6,433.5 " style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD"></path><path d="M386,433.5 L386,443.5 L396,443.5 L386,433.5 " style="stroke:#181818;stroke-width:0.5;" fill="#FEFFDD"></path><text font-weight="bold" lengthAdjust="spacing" x="12" font-size="13" textLength="63" y="450.5669" font-family="sans-serif" fill="#000000">Option 1</text><text lengthAdjust="spacing" x="79" font-size="13" textLength="254" y="450.5669" font-family="sans-serif" fill="#000000">- only the PregnancyStatus Observation</text><text lengthAdjust="spacing" x="12" font-size="13" textLength="274" y="465.6997" font-family="sans-serif" fill="#000000">(IPS-compatible). No Condition exchanged.</text><text lengthAdjust="spacing" x="12" font-size="13" textLength="363" y="480.8325" font-family="sans-serif" fill="#000000">When Pregnancy (Condition) exists, the PregnancyStatus</text><text lengthAdjust="spacing" x="12" font-size="13" textLength="369" y="495.9653" font-family="sans-serif" fill="#000000">may have a reference (identifier) to the actual Pregnancy.</text></g>  <!-- link edd to PSO --><g id="link_edd_PSO"><path codeLine="64" d="M575,340.36 C575,354.27 575,370.9 575,387.5 " style="stroke:#181818;stroke-width:1.0;" id="edd-to-PSO" fill="none"></path><polygon style="stroke:#181818;stroke-width:1.0;" fill="none" points="575,400.74,579,394.74,575,388.74,571,394.74,575,400.74"></polygon><text lengthAdjust="spacing" x="548.9375" font-size="13" textLength="24" y="359.9002" font-family="sans-serif" fill="#000000">1..1</text><text lengthAdjust="spacing" x="566.5875" font-size="13" textLength="8" y="389.997" font-family="sans-serif" fill="#000000">1</text></g>  <!-- link enc to PSO --><g id="link_enc_PSO"><path codeLine="65" d="M380.68,340.16 C404.45,355.8 433.5,374.91 461.82,393.54 " style="stroke:#181818;stroke-width:1.0;" id="enc-to-PSO" fill="none"></path><polygon style="stroke:#181818;stroke-width:1.0;" fill="none" points="473.04,400.92,470.226,394.2806,463.015,394.3246,465.829,400.964,473.04,400.92"></polygon><text lengthAdjust="spacing" x="363.9261" font-size="13" textLength="24" y="359.9363" font-family="sans-serif" fill="#000000">1..1</text><text lengthAdjust="spacing" x="453.4506" font-size="13" textLength="8" y="389.7233" font-family="sans-serif" fill="#000000">1</text></g>  <!-- reverse link PSO to ade --><g id="link_PSO_ade"><path codeLine="66" d="M731.87,469 C739.15,469 746.43,469 753.71,469 " style="stroke:#181818;stroke-width:1.0;" id="PSO-backto-ade" fill="none"></path><polygon style="stroke:#181818;stroke-width:1.0;" fill="none" points="718.76,469,724.76,473,730.76,469,724.76,465,718.76,469"></polygon><text lengthAdjust="spacing" x="726.3789" font-size="13" textLength="8" y="465.6816" font-family="sans-serif" fill="#000000">1</text><text lengthAdjust="spacing" x="722.1198" font-size="13" textLength="24" y="465.6403" font-family="sans-serif" fill="#000000">0..1</text></g>  <!-- reverse link PREG to edd --><g id="link_PREG_edd"><path codeLine="71" d="M575,197.29 C575,222.79 575,248.68 575,268.52 " style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;" id="PREG-backto-edd" fill="none"></path><polygon style="stroke:#181818;stroke-width:1.0;" fill="#181818" points="575,192.2,571,201.2,575,197.2,579,201.2,575,192.2"></polygon><text lengthAdjust="spacing" x="576" font-size="13" textLength="34" y="235.0669" font-family="sans-serif" fill="#000000">focus</text><text lengthAdjust="spacing" x="550.0813" font-size="13" textLength="24" y="211.9447" font-family="sans-serif" fill="#000000">0..1</text><text lengthAdjust="spacing" x="548.8625" font-size="13" textLength="24" y="257.8636" font-family="sans-serif" fill="#000000">1..1</text></g>  <!-- reverse link PREG to enc --><g id="link_PREG_enc"><path codeLine="72" d="M459.54,195.39 C427.65,221.6 395.04,248.4 370.27,268.76 " style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;" id="PREG-backto-enc" fill="none"></path><polygon style="stroke:#181818;stroke-width:1.0;" fill="#181818" points="463.42,192.2,453.923,194.809,459.5521,195.3685,458.9926,200.9976,463.42,192.2"></polygon><text lengthAdjust="spacing" x="424" font-size="13" textLength="34" y="235.0669" font-family="sans-serif" fill="#000000">focus</text><text lengthAdjust="spacing" x="429.9584" font-size="13" textLength="24" y="211.9447" font-family="sans-serif" fill="#000000">0..1</text><text lengthAdjust="spacing" x="351.851" font-size="13" textLength="24" y="257.8768" font-family="sans-serif" fill="#000000">1..1</text></g>  <!-- reverse link PREG to PSO --><g id="link_PREG_PSO"><path codeLine="73" d="M656.16,196.43 C670.89,218.91 684.09,243.72 692,269 C701.43,299.11 703.42,310.58 692,340 C683.39,362.17 668.96,382.85 653.11,400.84 " style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;" id="PREG-backto-PSO" fill="none"></path><polygon style="stroke:#181818;stroke-width:1.0;" fill="#181818" points="653.39,192.26,655.0156,201.9738,656.147,196.4312,661.6896,197.5626,653.39,192.26"></polygon><text lengthAdjust="spacing" x="700" font-size="13" textLength="34" y="309.0669" font-family="sans-serif" fill="#000000">focus</text><text lengthAdjust="spacing" x="634.473" font-size="13" textLength="24" y="212.0093" font-family="sans-serif" fill="#000000">0..1</text><text lengthAdjust="spacing" x="635.9276" font-size="13" textLength="24" y="390.1073" font-family="sans-serif" fill="#000000">0..1</text></g><rect rx="7.5" ry="7.5" width="566" x="209.5" y="555.0781" style="stroke:#000000;stroke-width:1.0;" id="_legend" fill="#DDDDDD" height="287.0469"></rect><text font-weight="bold" lengthAdjust="spacing" x="214.5" font-size="14" textLength="101" y="573.0732" font-family="sans-serif" fill="#000000">Compatibility</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="4" y="589.3701" font-family="sans-serif" fill="#000000">&nbsp;</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="133" y="605.667" font-family="sans-serif" fill="#000000">It is possible to use</text><text font-weight="bold" lengthAdjust="spacing" x="351.5" font-size="14" textLength="134" y="605.667" font-family="sans-serif" fill="#000000">PregnancyStatus</text><text lengthAdjust="spacing" x="489.5" font-size="14" textLength="268" y="605.667" font-family="sans-serif" fill="#000000">(Observation) + member observations.</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="27" y="621.9639" font-family="sans-serif" fill="#000000">The</text><text font-weight="bold" lengthAdjust="spacing" x="245.5" font-size="14" textLength="202" y="621.9639" font-family="sans-serif" fill="#000000">parent knows its children</text><text lengthAdjust="spacing" x="451.5" font-size="14" textLength="319" y="621.9639" font-family="sans-serif" fill="#000000">(Observation.hasMember); the children do not</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="510" y="638.2607" font-family="sans-serif" fill="#000000">point back. So a member observation (EDD, number of children, end date)</text><text font-weight="bold" lengthAdjust="spacing" x="214.5" font-size="14" textLength="212" y="654.5576" font-family="sans-serif" fill="#000000">never changes intrinsically</text><text lengthAdjust="spacing" x="430.5" font-size="14" textLength="310" y="654.5576" font-family="sans-serif" fill="#000000">when it is grouped under a PregnancyStatus.</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="4" y="670.8545" font-family="sans-serif" fill="#000000">&nbsp;</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="9" y="687.1514" font-family="sans-serif" fill="#000000">A</text><text font-weight="bold" lengthAdjust="spacing" x="227.5" font-size="14" textLength="176" y="687.1514" font-family="sans-serif" fill="#000000">Pregnancy (Condition)</text><text lengthAdjust="spacing" x="407.5" font-size="14" textLength="189" y="687.1514" font-family="sans-serif" fill="#000000">and its relationships can be</text><text font-weight="bold" lengthAdjust="spacing" x="600.5" font-size="14" textLength="90" y="687.1514" font-family="sans-serif" fill="#000000">added later</text><text lengthAdjust="spacing" x="690.5" font-size="14" textLength="4" y="687.1514" font-family="sans-serif" fill="#000000">.</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="134" y="703.4482" font-family="sans-serif" fill="#000000">In that case it is the</text><text font-weight="bold" lengthAdjust="spacing" x="352.5" font-size="14" textLength="311" y="703.4482" font-family="sans-serif" fill="#000000">observation that references the parent</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="501" y="719.7451" font-family="sans-serif" fill="#000000">(e.g. Observation.focus, or an extension). Adding the Condition therefore</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="35" y="736.042" font-family="sans-serif" fill="#000000">does</text><text font-weight="bold" lengthAdjust="spacing" x="253.5" font-size="14" textLength="26" y="736.042" font-family="sans-serif" fill="#000000">not</text><text lengthAdjust="spacing" x="283.5" font-size="14" textLength="422" y="736.042" font-family="sans-serif" fill="#000000">require redesigning the existing observations - the very same</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="429" y="752.3389" font-family="sans-serif" fill="#000000">observation may simply *also* be referenced from a Condition.</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="4" y="768.6357" font-family="sans-serif" fill="#000000">&nbsp;</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="531" y="784.9326" font-family="sans-serif" fill="#000000">The Condition may also be used without the Observation Status - the options</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="235" y="801.2295" font-family="sans-serif" fill="#000000">are therefore mutually compatible.</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="4" y="817.5264" font-family="sans-serif" fill="#000000">&nbsp;</text><text lengthAdjust="spacing" x="214.5" font-size="14" textLength="4" y="833.8232" font-family="sans-serif" fill="#000000">&nbsp;</text></g></svg>
+</figure>
+
+<h3 id="fetching-the-data">Fetching the data</h3>
+
+<p>Because the pregnancy status <code class="language-plaintext highlighter-rouge">Observation</code> <strong>contains</strong> its detail observations,
+fetching the status returns the details <strong>inline</strong> — no <code class="language-plaintext highlighter-rouge">_include</code> is needed for
+them.</p>
+
+<p><strong>Given a patient</strong> — fetch the pregnancy status (the EDD, number of children and
+end date come contained within it):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Observation?subject=Patient/123&amp;code=http://loinc.org|82810-3
+</code></pre></div></div>
+
+<p>To list the pregnancy observations <em>about</em> a patient from the other direction:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET [base]/Patient/123?_revinclude=Observation:subject
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Note.</strong> When the pregnancy is also represented as a <code class="language-plaintext highlighter-rouge">Condition</code> (clinical-care
+scope), the observations link to it via <code class="language-plaintext highlighter-rouge">Observation.focus</code> — a literal reference
+or a logical reference (a unique pregnancy identifier). See the framing discussion
+above. The recorder is carried in the <code class="language-plaintext highlighter-rouge">be-ext-recorder</code> extension.</p>
+</blockquote>
+
+
+
+</div>
+        </div>    <!-- /inner-wrapper -->
+      </div>    <!-- /row -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-content -->
+
+  <script src="assets/js/jquery.js" type="text/javascript"> </script>       <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script src="assets/js/jquery-ui.min.js" type="text/javascript"> </script>
+  <script src="assets/js/flags.js" type="text/javascript"> </script>
+
+  <script src="assets/js/window-hash.js" type="text/javascript"> </script>
+  <script src="assets/js/togglechanges.js" type="text/javascript"> </script>
+  <script src="assets/js/requirements-table.js" type="text/javascript"> </script>
+  <a name="bottom"> </a>
+  <div igtool="footer" id="segment-footer" class="segment">    <!-- segment-footer -->
+    <div class="container" data-fhir="generated">    <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+
+
+
+          IG &copy; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.departementzorg.be">Departement Zorg</a>.  
+          Package be.fhir.pregnancy#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
+          Generated 
+  <span title="2026-07-09 11:32:00 +0000">
+    2026-07-09
+  </span>
+
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+              <!-- Departement Zorg -->
+  <!-- draft -->
+
+Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="../qa.html">QA Report</a> |
+                 
+                 <a style="color: var(--footer-hyperlink-text-color)" href="https://www.ehealth.fgov.be/standards/fhir/pregnancy/history.html" target="_blank">Version History</a> |
+                 <a rel="license" style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/license.html"><img src="assets/images/cc-by.png" alt="CC-BY" style="border-style: none;" height="17"/></a>
+  <!-- no fitting stylesheet found (status/publisher) -->
+
+
+          </span>
+        </p>
+      </div>    <!-- /inner-wrapper -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">    <!-- segment-post-footer -->
+    <div class="container">    <!-- container -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-post-footer -->
+
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"> </script>
+  <script src="assets/js/respond.min.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard-btn.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor-hover.js" type="text/javascript"> </script>
+    <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>

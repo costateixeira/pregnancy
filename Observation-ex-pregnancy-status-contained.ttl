@@ -1,0 +1,147 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <http://loinc.org/rdf#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://www.ehealth.fgov.be/standards/fhir/pregnancy/Observation/ex-pregnancy-status-contained> a fhir:Observation ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "ex-pregnancy-status-contained"] ;
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "https://www.ehealth.fgov.be/standards/fhir/pregnancy/StructureDefinition/be-pregnancy-status" ;
+       fhir:index 0 ;
+       fhir:link <https://www.ehealth.fgov.be/standards/fhir/pregnancy/StructureDefinition/be-pregnancy-status>
+     ]
+  ] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Observation ex-pregnancy-status-contained</b></p><a name=\"ex-pregnancy-status-contained\"> </a><a name=\"hcex-pregnancy-status-contained\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-be-pregnancy-status.html\">Pregnancy Status (administrative)</a></p></div><p><b>identifier</b>: <code>https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation</code>/status-contained</p><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 82810-3}\">Pregnancy status</span></p><p><b>subject</b>: <a href=\"Patient-ex-pregnant-woman.html\">Jana Peeters  Female, DoB Unknown</a></p><p><b>effective</b>: 2026-02-10</p><p><b>performer</b>: <a href=\"Practitioner-ex-gynaecologist.html\">Practitioner Anke De Vries </a></p><p><b>value</b>: <span title=\"Codes:{http://snomed.info/sct 77386006}\">Pregnant (finding)</span></p><p><b>hasMember</b>: </p><ul><li><a href=\"#hcex-pregnancy-status-contained/edd\">Observation Delivery date Estimated</a></li><li><a href=\"#hcex-pregnancy-status-contained/children\">Observation Number of fetuses by US</a></li></ul><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: Observation #edd</b></p><a name=\"ex-pregnancy-status-contained/edd\"> </a><a name=\"hcex-pregnancy-status-contained/edd\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://www.ehealth.fgov.be/standards/fhir/core-clinical/1.1.0/StructureDefinition-be-clinical-observation.html\">BeClinicalObservation</a></p></div><p><b>identifier</b>: <code>https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation</code>/edd-contained</p><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 11778-8}\">Delivery date Estimated</span></p><p><b>subject</b>: <a href=\"Patient-ex-pregnant-woman.html\">Jana Peeters  Female, DoB Unknown</a></p><p><b>effective</b>: 2026-02-10</p><p><b>performer</b>: <a href=\"Practitioner-ex-gynaecologist.html\">Practitioner Anke De Vries </a></p><p><b>value</b>: 2026-09-15</p></blockquote><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: Observation #children</b></p><a name=\"ex-pregnancy-status-contained/children\"> </a><a name=\"hcex-pregnancy-status-contained/children\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://www.ehealth.fgov.be/standards/fhir/core-clinical/1.1.0/StructureDefinition-be-clinical-observation.html\">BeClinicalObservation</a></p></div><p><b>identifier</b>: <code>https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation</code>/children-contained</p><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 11878-6}\">Number of fetuses by US</span></p><p><b>subject</b>: <a href=\"Patient-ex-pregnant-woman.html\">Jana Peeters  Female, DoB Unknown</a></p><p><b>effective</b>: 2026-02-10</p><p><b>performer</b>: <a href=\"Practitioner-ex-gynaecologist.html\">Practitioner Anke De Vries </a></p><p><b>value</b>: 1</p></blockquote></div>"
+  ] ;
+  fhir:DomainResource.contained [
+     a fhir:Observation ;
+     fhir:index 0 ;
+     fhir:Resource.id [ fhir:value "edd" ] ;
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/be-clinical-observation" ;
+         fhir:index 0 ;
+         fhir:link <https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/be-clinical-observation>
+       ]
+     ] ;
+     fhir:Observation.identifier [
+       fhir:index 0 ;
+       fhir:Identifier.system [ fhir:value "https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation" ] ;
+       fhir:Identifier.value [ fhir:value "edd-contained" ]
+     ] ;
+     fhir:Observation.status [ fhir:value "final" ] ;
+     fhir:Observation.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0 ;
+         a loinc:11778-8 ;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+         fhir:Coding.code [ fhir:value "11778-8" ] ;
+         fhir:Coding.display [ fhir:value "Delivery date Estimated" ]
+       ]
+     ] ;
+     fhir:Observation.subject [
+       fhir:link <https://www.ehealth.fgov.be/standards/fhir/pregnancy/Patient/ex-pregnant-woman> ;
+       fhir:Reference.reference [ fhir:value "Patient/ex-pregnant-woman" ]
+     ] ;
+     fhir:Observation.effectiveDateTime [ fhir:value "2026-02-10"^^xsd:date ] ;
+     fhir:Observation.performer [
+       fhir:index 0 ;
+       fhir:link <https://www.ehealth.fgov.be/standards/fhir/pregnancy/Practitioner/ex-gynaecologist> ;
+       fhir:Reference.reference [ fhir:value "Practitioner/ex-gynaecologist" ]
+     ] ;
+     fhir:Observation.valueDateTime [ fhir:value "2026-09-15"^^xsd:date ]
+  ], [
+     a fhir:Observation ;
+     fhir:index 1 ;
+     fhir:Resource.id [ fhir:value "children" ] ;
+     fhir:Resource.meta [
+       fhir:Meta.profile [
+         fhir:value "https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/be-clinical-observation" ;
+         fhir:index 0 ;
+         fhir:link <https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/be-clinical-observation>
+       ]
+     ] ;
+     fhir:Observation.identifier [
+       fhir:index 0 ;
+       fhir:Identifier.system [ fhir:value "https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation" ] ;
+       fhir:Identifier.value [ fhir:value "children-contained" ]
+     ] ;
+     fhir:Observation.status [ fhir:value "final" ] ;
+     fhir:Observation.code [
+       fhir:CodeableConcept.coding [
+         fhir:index 0 ;
+         a loinc:11878-6 ;
+         fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+         fhir:Coding.code [ fhir:value "11878-6" ] ;
+         fhir:Coding.display [ fhir:value "Number of fetuses by US" ]
+       ]
+     ] ;
+     fhir:Observation.subject [
+       fhir:link <https://www.ehealth.fgov.be/standards/fhir/pregnancy/Patient/ex-pregnant-woman> ;
+       fhir:Reference.reference [ fhir:value "Patient/ex-pregnant-woman" ]
+     ] ;
+     fhir:Observation.effectiveDateTime [ fhir:value "2026-02-10"^^xsd:date ] ;
+     fhir:Observation.performer [
+       fhir:index 0 ;
+       fhir:link <https://www.ehealth.fgov.be/standards/fhir/pregnancy/Practitioner/ex-gynaecologist> ;
+       fhir:Reference.reference [ fhir:value "Practitioner/ex-gynaecologist" ]
+     ] ;
+     fhir:Observation.valueInteger [ fhir:value "1"^^xsd:integer ]
+  ] ;
+  fhir:Observation.identifier [
+     fhir:index 0 ;
+     fhir:Identifier.system [ fhir:value "https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation" ] ;
+     fhir:Identifier.value [ fhir:value "status-contained" ]
+  ] ;
+  fhir:Observation.status [ fhir:value "final"] ;
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a loinc:82810-3 ;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ] ;
+       fhir:Coding.code [ fhir:value "82810-3" ] ;
+       fhir:Coding.display [ fhir:value "Pregnancy status" ]
+     ]
+  ] ;
+  fhir:Observation.subject [
+     fhir:link <https://www.ehealth.fgov.be/standards/fhir/pregnancy/Patient/ex-pregnant-woman> ;
+     fhir:Reference.reference [ fhir:value "Patient/ex-pregnant-woman" ]
+  ] ;
+  fhir:Observation.effectiveDateTime [ fhir:value "2026-02-10"^^xsd:date] ;
+  fhir:Observation.performer [
+     fhir:index 0 ;
+     fhir:link <https://www.ehealth.fgov.be/standards/fhir/pregnancy/Practitioner/ex-gynaecologist> ;
+     fhir:Reference.reference [ fhir:value "Practitioner/ex-gynaecologist" ]
+  ] ;
+  fhir:Observation.valueCodeableConcept [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a sct:77386006 ;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ] ;
+       fhir:Coding.code [ fhir:value "77386006" ] ;
+       fhir:Coding.display [ fhir:value "Pregnant (finding)" ]
+     ]
+  ] ;
+  fhir:Observation.hasMember [
+     fhir:index 0 ;
+     fhir:Reference.reference [ fhir:value "#edd" ]
+  ], [
+     fhir:index 1 ;
+     fhir:Reference.reference [ fhir:value "#children" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<https://www.ehealth.fgov.be/standards/fhir/pregnancy/Observation/ex-pregnancy-status-contained.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

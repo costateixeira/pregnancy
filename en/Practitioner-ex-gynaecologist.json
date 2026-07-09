@@ -1,0 +1,13 @@
+{
+  "resourceType" : "Practitioner",
+  "id" : "ex-gynaecologist",
+  "language" : "en",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Practitioner ex-gynaecologist</b></p><a name=\"ex-gynaecologist\"> </a><a name=\"hcex-gynaecologist\"> </a><p><b>name</b>: Anke De Vries </p></div>"
+  },
+  "name" : [{
+    "family" : "De Vries",
+    "given" : ["Anke"]
+  }]
+}

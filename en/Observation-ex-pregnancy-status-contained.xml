@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Observation xmlns="http://hl7.org/fhir">
+  <id value="ex-pregnancy-status-contained"/>
+  <meta>
+    <profile value="https://www.ehealth.fgov.be/standards/fhir/pregnancy/StructureDefinition/be-pregnancy-status"/>
+  </meta>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Observation ex-pregnancy-status-contained</b></p><a name="ex-pregnancy-status-contained"> </a><a name="hcex-pregnancy-status-contained"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="StructureDefinition-be-pregnancy-status.html">Pregnancy Status (administrative)</a></p></div><p><b>identifier</b>: <code>https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation</code>/status-contained</p><p><b>status</b>: Final</p><p><b>code</b>: <span title="Codes:{http://loinc.org 82810-3}">Pregnancy status</span></p><p><b>subject</b>: <a href="Patient-ex-pregnant-woman.html">Jana Peeters  Female, DoB Unknown</a></p><p><b>effective</b>: 2026-02-10</p><p><b>performer</b>: <a href="Practitioner-ex-gynaecologist.html">Practitioner Anke De Vries </a></p><p><b>value</b>: <span title="Codes:{http://snomed.info/sct 77386006}">Pregnant (finding)</span></p><p><b>hasMember</b>: </p><ul><li><a href="#hcex-pregnancy-status-contained/edd">Observation Delivery date Estimated</a></li><li><a href="#hcex-pregnancy-status-contained/children">Observation Number of fetuses by US</a></li></ul><hr/><blockquote><p class="res-header-id"><b>Generated Narrative: Observation #edd</b></p><a name="ex-pregnancy-status-contained/edd"> </a><a name="hcex-pregnancy-status-contained/edd"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="https://www.ehealth.fgov.be/standards/fhir/core-clinical/1.1.0/StructureDefinition-be-clinical-observation.html">BeClinicalObservation</a></p></div><p><b>identifier</b>: <code>https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation</code>/edd-contained</p><p><b>status</b>: Final</p><p><b>code</b>: <span title="Codes:{http://loinc.org 11778-8}">Delivery date Estimated</span></p><p><b>subject</b>: <a href="Patient-ex-pregnant-woman.html">Jana Peeters  Female, DoB Unknown</a></p><p><b>effective</b>: 2026-02-10</p><p><b>performer</b>: <a href="Practitioner-ex-gynaecologist.html">Practitioner Anke De Vries </a></p><p><b>value</b>: 2026-09-15</p></blockquote><hr/><blockquote><p class="res-header-id"><b>Generated Narrative: Observation #children</b></p><a name="ex-pregnancy-status-contained/children"> </a><a name="hcex-pregnancy-status-contained/children"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profile: <a href="https://www.ehealth.fgov.be/standards/fhir/core-clinical/1.1.0/StructureDefinition-be-clinical-observation.html">BeClinicalObservation</a></p></div><p><b>identifier</b>: <code>https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation</code>/children-contained</p><p><b>status</b>: Final</p><p><b>code</b>: <span title="Codes:{http://loinc.org 11878-6}">Number of fetuses by US</span></p><p><b>subject</b>: <a href="Patient-ex-pregnant-woman.html">Jana Peeters  Female, DoB Unknown</a></p><p><b>effective</b>: 2026-02-10</p><p><b>performer</b>: <a href="Practitioner-ex-gynaecologist.html">Practitioner Anke De Vries </a></p><p><b>value</b>: 1</p></blockquote></div>
+  </text>
+  <contained>
+    <Observation>
+      <id value="edd"/>
+      <meta>
+        <profile value="https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/be-clinical-observation"/>
+      </meta>
+      <identifier>
+        <system value="https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation"/>
+        <value value="edd-contained"/>
+      </identifier>
+      <status value="final"/>
+      <code>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="11778-8"/>
+          <display value="Delivery date Estimated"/>
+        </coding>
+      </code>
+      <subject>
+        <reference value="Patient/ex-pregnant-woman"/>
+      </subject>
+      <effectiveDateTime value="2026-02-10"/>
+      <performer>
+        <reference value="Practitioner/ex-gynaecologist"/>
+      </performer>
+      <valueDateTime value="2026-09-15"/>
+    </Observation>
+  </contained>
+  <contained>
+    <Observation>
+      <id value="children"/>
+      <meta>
+        <profile value="https://www.ehealth.fgov.be/standards/fhir/core-clinical/StructureDefinition/be-clinical-observation"/>
+      </meta>
+      <identifier>
+        <system value="https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation"/>
+        <value value="children-contained"/>
+      </identifier>
+      <status value="final"/>
+      <code>
+        <coding>
+          <system value="http://loinc.org"/>
+          <code value="11878-6"/>
+          <display value="Number of fetuses by US"/>
+        </coding>
+      </code>
+      <subject>
+        <reference value="Patient/ex-pregnant-woman"/>
+      </subject>
+      <effectiveDateTime value="2026-02-10"/>
+      <performer>
+        <reference value="Practitioner/ex-gynaecologist"/>
+      </performer>
+      <valueInteger value="1"/>
+    </Observation>
+  </contained>
+  <identifier>
+    <system value="https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation"/>
+    <value value="status-contained"/>
+  </identifier>
+  <status value="final"/>
+  <code>
+    <coding>
+      <system value="http://loinc.org"/>
+      <code value="82810-3"/>
+      <display value="Pregnancy status"/>
+    </coding>
+  </code>
+  <subject>
+    <reference value="Patient/ex-pregnant-woman"/>
+  </subject>
+  <effectiveDateTime value="2026-02-10"/>
+  <performer>
+    <reference value="Practitioner/ex-gynaecologist"/>
+  </performer>
+  <valueCodeableConcept>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="77386006"/>
+      <display value="Pregnant (finding)"/>
+    </coding>
+  </valueCodeableConcept>
+  <hasMember>
+    <reference value="#edd"/>
+  </hasMember>
+  <hasMember>
+    <reference value="#children"/>
+  </hasMember>
+</Observation>

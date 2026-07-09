@@ -1,0 +1,11 @@
+{
+  "codeSystems" : [{
+    "url" : "https://www.ehealth.fgov.be/standards/fhir/pregnancy/ValueSet/be-pregnancy-status-vs",
+    "version" : "0.1.0",
+    "status" : "draft",
+    "name" : "BePregnancyStatusVS",
+    "title" : "Pregnancy status value set (BE)",
+    "description" : "Codes describing the current pregnancy status of a woman, aligned with the IPS pregnancy status value set.",
+    "systems" : ["http://snomed.info/sct"]
+  }]
+}

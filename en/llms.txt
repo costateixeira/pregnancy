@@ -1,0 +1,33 @@
+# be.fhir.pregnancy#0.1.0: Belgian Pregnancy Implementation Guide(en)
+
+## Pages
+
+* [Home](index.md)
+* [Pregnancy Status](pregnancy-status.md)
+* [Artifacts Summary](artifacts.md)
+
+## Resources
+
+### ValueSets
+
+* [Pregnancy status value set (BE)](ValueSet-be-pregnancy-status-vs.md)
+
+### Logicals
+
+* [Pregnancy Status Model](StructureDefinition-PregnancyStatusDataSet.md)
+
+### Resource Profiles
+
+* [Pregnancy (Condition)](StructureDefinition-be-pregnancy-condition.md)
+* [Pregnancy Status (administrative)](StructureDefinition-be-pregnancy-status.md)
+
+### ImplementationGuides
+
+* [Belgian Pregnancy Implementation Guide](ImplementationGuide-be.fhir.pregnancy.md)
+
+### Examples
+
+* [ex-pregnancy-condition (Condition)](Condition-ex-pregnancy-condition.md)
+* [ex-pregnancy-status-contained (Observation)](Observation-ex-pregnancy-status-contained.md)
+* [ex-pregnant-woman (Patient)](Patient-ex-pregnant-woman.md)
+* [ex-gynaecologist (Practitioner)](Practitioner-ex-gynaecologist.md)

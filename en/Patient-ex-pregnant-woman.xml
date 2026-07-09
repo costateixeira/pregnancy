@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patient xmlns="http://hl7.org/fhir">
+  <id value="ex-pregnant-woman"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Patient ex-pregnant-woman</b></p><a name="ex-pregnant-woman"> </a><a name="hcex-pregnant-woman"> </a><p style="border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;">Jana Peeters  Female, DoB Unknown</p><hr/></div>
+  </text>
+  <name>
+    <family value="Peeters"/>
+    <given value="Jana"/>
+  </name>
+  <gender value="female"/>
+</Patient>

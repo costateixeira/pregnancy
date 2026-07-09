@@ -1,0 +1,39 @@
+"Id","Path","Slice Name","Alias(s)","Label","Min","Max","Must Support?","Is Modifier?","Is Summary?","Type(s)","Short","Definition","Comments","Requirements","Default Value","Meaning When Missing","Fixed Value","Pattern","Example","Minimum Value","Maximum Value","Maximum Length","Binding Strength","Binding Description","Binding Value Set","Code","Slicing Discriminator","Slicing Description","Slicing Ordered","Slicing Rules","Base Path","Base Min","Base Max","Condition(s)","Constraint(s)"
+"PregnancyStatusDataSet","PregnancyStatusDataSet","","","",0,*,"","","","null {[]} {[]}
+","Pregnancy Status Model","Logical model for the pregnancy-status data.
+
+This is the minimal data set for the pregnancy status (consumed, for example, via
+Vitalink FHIR / MAGDA / VUTG / mijnburgerprofiel.be / mijngezondheid.be /
+caregivers).","","","","","","","","","",,,,,"",,,,"Base",0,*,"",""
+"PregnancyStatusDataSet.pregnancy","PregnancyStatusDataSet.pregnancy","","","",1,1,"","","","Base {[]} {[]}
+","Pregnancy Episode","Pregnancy Episode","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.patient","PregnancyStatusDataSet.pregnancy.patient","","","",1,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Patient]]}
+","Patient (pregnant woman)","The patient who is pregnant. The reference may identify the patient by pseudonymised SSIN, depending on the implementation.","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.patient",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.author","PregnancyStatusDataSet.pregnancy.author","","","",1,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner]]}
+","The healthcare professional who takes responsibility for the recording of the pregnancy information","The healthcare professional who takes responsibility for the recording of the pregnancy information","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.author",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.updateDate","PregnancyStatusDataSet.pregnancy.updateDate","","","",1,1,"","","","date {[]} {[]}
+","Last update date","The last date on which the pregnant woman was observed by her gynaecologist or midwife during the pregnancy.","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.updateDate",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.firstRecordedDate","PregnancyStatusDataSet.pregnancy.firstRecordedDate","","","",1,1,"","","","date {[]} {[]}
+","Recorded date of pregnancy","The date the pregnancy was first registered in the system. This is not the date the pregnancy was observed, but the date it was entered in the system for the first time.","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.firstRecordedDate",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus","PregnancyStatusDataSet.pregnancy.pregnancyStatus","","","",1,1,"","","","Base {[]} {[]}
+","Pregnancy status (observation)","Observation conveying the current pregnancy status of the woman at the date of observation (e.g. pregnant, not pregnant). Bound to SNOMED CT, EHDS Patient Summary aligned.","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus.value","PregnancyStatusDataSet.pregnancy.pregnancyStatus.value","","","",1,1,"","","","CodeableConcept {[]} {[]}
+","The actual value","Coded pregnancy status (e.g. pregnant, not pregnant).","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus.value",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus.author","PregnancyStatusDataSet.pregnancy.pregnancyStatus.author","","","",1,1,"","","","Reference {[]} {[CanonicalType[http://hl7.org/fhir/StructureDefinition/Practitioner]]}
+","Practitioner who recorded the pregnancy status","Practitioner who recorded the pregnancy status","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus.author",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus.pregnancyStartDate","PregnancyStatusDataSet.pregnancy.pregnancyStatus.pregnancyStartDate","","","",1,1,"","","","Base {[]} {[]}
+","Date the pregnancy started","The date the pregnancy began, usually estimated as the first day of the last menstrual period (LMP) or from an early ultrasound.","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus.pregnancyStartDate",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus.pregnancyStartDate.value","PregnancyStatusDataSet.pregnancy.pregnancyStatus.pregnancyStartDate.value","","","",1,1,"","","","date {[]} {[]}
+","The actual value","The actual value","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus.pregnancyStartDate.value",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus.estimatedDateOfDelivery","PregnancyStatusDataSet.pregnancy.pregnancyStatus.estimatedDateOfDelivery","","","",1,1,"","","","Base {[]} {[]}
+","Estimated date of delivery","The date the practitioner expects the delivery, usually etimated from the ultrasound. It normally does not change after the initial etimation; the actual delivery date is typically within ±2 weeks.","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus.estimatedDateOfDelivery",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus.estimatedDateOfDelivery.value","PregnancyStatusDataSet.pregnancy.pregnancyStatus.estimatedDateOfDelivery.value","","","",1,1,"","","","date {[]} {[]}
+","The actual value","The actual value","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus.estimatedDateOfDelivery.value",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus.dateOfEndOfPregnancy","PregnancyStatusDataSet.pregnancy.pregnancyStatus.dateOfEndOfPregnancy","","","",0,1,"","","","Base {[]} {[]}
+","Date of end of pregnancy","The actual end date of the pregnancy.","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus.dateOfEndOfPregnancy",0,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus.dateOfEndOfPregnancy.value","PregnancyStatusDataSet.pregnancy.pregnancyStatus.dateOfEndOfPregnancy.value","","","",1,1,"","","","date {[]} {[]}
+","The actual value","The actual value","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus.dateOfEndOfPregnancy.value",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus.expectedNumberOfChildren","PregnancyStatusDataSet.pregnancy.pregnancyStatus.expectedNumberOfChildren","","","",1,1,"","","","Base {[]} {[]}
+","Expected number of children","The number of births the practitioner expects in the delivery, usually estimated from the ultrasound.","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus.expectedNumberOfChildren",1,1,"",""
+"PregnancyStatusDataSet.pregnancy.pregnancyStatus.expectedNumberOfChildren.value","PregnancyStatusDataSet.pregnancy.pregnancyStatus.expectedNumberOfChildren.value","","","",1,1,"","","","integer {[]} {[]}
+","The actual value","The actual value","","","","","","","","","",,,,,"",,,,"PregnancyStatusDataSet.pregnancy.pregnancyStatus.expectedNumberOfChildren.value",1,1,"",""

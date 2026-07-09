@@ -1,0 +1,55 @@
+BeFhirPregnancy : Validation Results
+=========================================
+
+err = 0, warn = 18, info = 7
+IG Publisher Version: 2.2.10
+Generated Thu Jul 09 11:34:37 UTC 2026. FHIR version 4.0.1 for be.fhir.pregnancy#0.1.0 (canonical = https://www.ehealth.fgov.be/standards/fhir/pregnancy)
+ Build Errors : 3 / 5 / 0
+ /work/fsh-generated/resources/Condition-ex-pregnancy-condition : 0 / 1 / 1
+ /work/fsh-generated/resources/ImplementationGuide-be.fhir.pregnancy : 0 / 2 / 2
+ /work/fsh-generated/resources/Patient-ex-pregnant-woman : 0 / 0 / 1
+ /work/fsh-generated/resources/Practitioner-ex-gynaecologist : 0 / 0 / 1
+ /work/fsh-generated/resources/StructureDefinition-PregnancyStatusDataSet : 0 / 0 / 2
+ /work/fsh-generated/resources/StructureDefinition-be-pregnancy-condition : 0 / 2 / 3
+ /work/fsh-generated/resources/StructureDefinition-be-pregnancy-status : 0 / 0 / 4
+ /work/fsh-generated/resources/ValueSet-be-pregnancy-status-vs : 0 / 4 / 1
+ /work/input/examples/Observation-ex-pregnancy-status-contained : 0 / 4 / 7
+</table>
+== n/a ==
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Observation/ex-pregnancy-status-contained.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+ERROR: en/StructureDefinition-PregnancyStatusDataSet.html#/html/body/div/div/div/div/div/div/ul/li/a at Line 304, column 320: The link 'StructureDefinition-be-observation-pregnancy-status.html' for "BePregnancyStatusObservation" cannot be resolved
+ERROR: en/StructureDefinition-be-pregnancy-condition.html#/html/body/div/div/div/div/div/div/ul/li/a at Line 311, column 266: The link 'StructureDefinition-be-observation-pregnancy-status.html' for "BePregnancyStatusObservation" cannot be resolved
+ERROR: en/pregnancy-status.html#/html/body/div/div/div/div/div/ul/li/a at Line 241, column 2: The link 'StructureDefinition-be-observation-pregnancy-status.html' for "BePregnancyStatusObservation" cannot be resolved
+WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
+WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
+WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml, dependency-table-nontech.xhtml] is not included anywhere in the produced implementation guide
+WARNING: 4: The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced implementation guide
+== fsh-generated/resources/Condition-ex-pregnancy-condition.json ==
+WARNING: Condition/ex-pregnancy-condition: Condition.code.coding[0].display: 'Pregnant (finding)' is no longer considered a correct display for code '77386006' (status = inactive). The correct display is one of Pregnancy,Pregnancy not delivered,Gestation,Pregnant,Pregnancy confirmed,Pregnancy (finding)
+== fsh-generated/resources/ImplementationGuide-be.fhir.pregnancy.json ==
+WARNING: ImplementationGuide/be.fhir.pregnancy: ImplementationGuide.dependsOn[2]: The ImplementationGuide uses package hl7.fhir.be.core-clinical#1.1.0 released on 2026-02-27, but the most recent appropriate version is 1.2.0. This reference is getting old and the more recent version should be considered
+WARNING: ImplementationGuide/be.fhir.pregnancy: ImplementationGuide.dependsOn[4]: The ImplementationGuide uses package hl7.fhir.uv.ips#2.0.0 released on 2025-10-03, but the most recent appropriate version is 2.0.1. This reference is getting old and the more recent version should be considered
+INFORMATION: Resource: The resource ImplementationGuide/be.fhir.pregnancy could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/Patient-ex-pregnant-woman.json ==
+== fsh-generated/resources/Practitioner-ex-gynaecologist.json ==
+== fsh-generated/resources/StructureDefinition-PregnancyStatusDataSet.json ==
+INFORMATION: Resource: The resource StructureDefinition/PregnancyStatusDataSet could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/StructureDefinition-be-pregnancy-condition.json ==
+INFORMATION: StructureDefinition/be-pregnancy-condition: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.3.0 is deprecated with the note: 'Use additionalBinding extension or element instead'
+WARNING: StructureDefinition/be-pregnancy-condition: StructureDefinition.snapshot.element[14].pattern.ofType(CodeableConcept).coding[0].display: 'Pregnant (finding)' is no longer considered a correct display for code '77386006' (status = inactive). The correct display is one of Pregnancy,Pregnancy not delivered,Gestation,Pregnant,Pregnancy confirmed,Pregnancy (finding)
+WARNING: StructureDefinition/be-pregnancy-condition: StructureDefinition.differential.element[2].pattern.ofType(CodeableConcept).coding[0].display: 'Pregnant (finding)' is no longer considered a correct display for code '77386006' (status = inactive). The correct display is one of Pregnancy,Pregnancy not delivered,Gestation,Pregnant,Pregnancy confirmed,Pregnancy (finding)
+INFORMATION: Resource: The resource StructureDefinition/be-pregnancy-condition could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/StructureDefinition-be-pregnancy-status.json ==
+INFORMATION: StructureDefinition/be-pregnancy-status: StructureDefinition.differential.element[1].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
+INFORMATION: StructureDefinition/be-pregnancy-status: StructureDefinition.snapshot.element[6].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
+INFORMATION: Resource: The resource StructureDefinition/be-pregnancy-status could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== fsh-generated/resources/ValueSet-be-pregnancy-status-vs.json ==
+WARNING: ValueSet/be-pregnancy-status-vs: ValueSet.compose.include[0].concept[0].display: 'Pregnant (finding)' is no longer considered a correct display for code '77386006' (status = inactive). The correct display is one of Pregnancy,Pregnancy not delivered,Gestation,Pregnant,Pregnancy confirmed,Pregnancy (finding)
+WARNING: ValueSet/be-pregnancy-status-vs: ValueSet.compose.include[0].concept[2]: The concept '102874004' has a status of inactive and its use should be reviewed
+WARNING: ValueSet/be-pregnancy-status-vs: ValueSet: Published value sets SHOULD conform to the ShareableValueSet profile, which says that the element ValueSet.experimental is mandatory, but it is not present
+WARNING: Resource: The resource ValueSet/be-pregnancy-status-vs should have an OID assigned to cater for possible use with OID based terminology systems e.g. CDA usage (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+== input/examples/Observation-ex-pregnancy-status-contained.json ==
+WARNING: Observation/ex-pregnancy-status-contained: Observation.contained[0]/*Observation/edd*/.identifier[0].system: No definition could be found for URL value 'https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation'
+WARNING: Observation/ex-pregnancy-status-contained: Observation.contained[1]/*Observation/children*/.identifier[0].system: No definition could be found for URL value 'https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation'
+WARNING: Observation/ex-pregnancy-status-contained: Observation.identifier[0].system: No definition could be found for URL value 'https://www.ehealth.fgov.be/standards/fhir/pregnancy/sid/observation'
+WARNING: Observation/ex-pregnancy-status-contained: Observation.value.ofType(CodeableConcept).coding[0].display: 'Pregnant (finding)' is no longer considered a correct display for code '77386006' (status = inactive). The correct display is one of Pregnancy,Pregnancy not delivered,Gestation,Pregnant,Pregnancy confirmed,Pregnancy (finding)

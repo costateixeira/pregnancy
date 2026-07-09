@@ -1,0 +1,56 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://www.ehealth.fgov.be/standards/fhir/pregnancy/Condition/ex-pregnancy-condition> a fhir:Condition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "ex-pregnancy-condition"] ;
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "https://www.ehealth.fgov.be/standards/fhir/pregnancy/StructureDefinition/be-pregnancy-condition" ;
+       fhir:index 0 ;
+       fhir:link <https://www.ehealth.fgov.be/standards/fhir/pregnancy/StructureDefinition/be-pregnancy-condition>
+     ]
+  ] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Condition ex-pregnancy-condition</b></p><a name=\"ex-pregnancy-condition\"> </a><a name=\"hcex-pregnancy-condition\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profile: <a href=\"StructureDefinition-be-pregnancy-condition.html\">Pregnancy (Condition)</a></p></div><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 77386006}\">Pregnant (finding)</span></p><p><b>subject</b>: <a href=\"Patient-ex-pregnant-woman.html\">Jana Peeters  Female, DoB Unknown</a></p><p><b>onset</b>: 2026-01-05</p><p><b>recordedDate</b>: 2026-02-10</p><p><b>recorder</b>: <a href=\"Practitioner-ex-gynaecologist.html\">Practitioner Anke De Vries </a></p></div>"
+  ] ;
+  fhir:Condition.clinicalStatus [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/condition-clinical" ] ;
+       fhir:Coding.code [ fhir:value "active" ]
+     ]
+  ] ;
+  fhir:Condition.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0 ;
+       a sct:77386006 ;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ] ;
+       fhir:Coding.code [ fhir:value "77386006" ] ;
+       fhir:Coding.display [ fhir:value "Pregnant (finding)" ]
+     ]
+  ] ;
+  fhir:Condition.subject [
+     fhir:link <https://www.ehealth.fgov.be/standards/fhir/pregnancy/Patient/ex-pregnant-woman> ;
+     fhir:Reference.reference [ fhir:value "Patient/ex-pregnant-woman" ]
+  ] ;
+  fhir:Condition.onsetDateTime [ fhir:value "2026-01-05"^^xsd:date] ;
+  fhir:Condition.recordedDate [ fhir:value "2026-02-10"^^xsd:date] ;
+  fhir:Condition.recorder [
+     fhir:link <https://www.ehealth.fgov.be/standards/fhir/pregnancy/Practitioner/ex-gynaecologist> ;
+     fhir:Reference.reference [ fhir:value "Practitioner/ex-gynaecologist" ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<https://www.ehealth.fgov.be/standards/fhir/pregnancy/Condition/ex-pregnancy-condition.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

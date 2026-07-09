@@ -1,0 +1,475 @@
+{
+  "date" : "Thu, 09 Jul, 2026 11:32:30 +0000",
+  "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
+  "files" : [{
+    "name" : "/fsh-generated/resources/ImplementationGuide-be.fhir.pregnancy.json",
+    "size" : 6473,
+    "processes" : [{
+      "activity" : "load",
+      "start" : 78,
+      "length" : 13
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 79,
+      "length" : 10
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 79,
+      "length" : 80
+    },
+    {
+      "activity" : "validate",
+      "start" : 86,
+      "length" : 3873
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 90,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 90,
+      "length" : 94
+    },
+    {
+      "activity" : "generate2",
+      "start" : 95,
+      "length" : 121
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 110,
+      "length" : 4
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Condition-ex-pregnancy-condition.json",
+    "size" : 747,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 78,
+      "length" : 4
+    },
+    {
+      "activity" : "load-configure",
+      "start" : 79,
+      "length" : 3
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 79,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 79,
+      "length" : 61
+    },
+    {
+      "activity" : "validate",
+      "start" : 90,
+      "length" : 18
+    },
+    {
+      "activity" : "generate1",
+      "start" : 90,
+      "length" : 15
+    },
+    {
+      "activity" : "generate2",
+      "start" : 95,
+      "length" : 14
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Patient-ex-pregnant-woman.json",
+    "size" : 179,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 78,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 79,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 90,
+      "length" : 4
+    },
+    {
+      "activity" : "generate1",
+      "start" : 90,
+      "length" : 10
+    },
+    {
+      "activity" : "generate2",
+      "start" : 95,
+      "length" : 9
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Practitioner-ex-gynaecologist.json",
+    "size" : 162,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 78,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 79,
+      "length" : 1
+    },
+    {
+      "activity" : "validate",
+      "start" : 90,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 90,
+      "length" : 10
+    },
+    {
+      "activity" : "generate2",
+      "start" : 95,
+      "length" : 6
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-PregnancyStatusDataSet.json",
+    "size" : 8918,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 78,
+      "length" : 4
+    },
+    {
+      "activity" : "load",
+      "start" : 78,
+      "length" : 14
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 78,
+      "length" : 12
+    },
+    {
+      "activity" : "loadDepInfo",
+      "start" : 79,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 79,
+      "length" : 75
+    },
+    {
+      "activity" : "validate",
+      "start" : 82,
+      "length" : 389
+    },
+    {
+      "activity" : "generate1",
+      "start" : 90,
+      "length" : 113
+    },
+    {
+      "activity" : "generate2",
+      "start" : 95,
+      "length" : 609
+    },
+    {
+      "activity" : "generate2",
+      "start" : 100,
+      "length" : 389
+    },
+    {
+      "activity" : "makeDependencies",
+      "start" : 103,
+      "length" : 1
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 110,
+      "length" : 4
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-be-pregnancy-condition.json",
+    "size" : 2045,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 78,
+      "length" : 2
+    },
+    {
+      "activity" : "load",
+      "start" : 78,
+      "length" : 4
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 78,
+      "length" : 37
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 79,
+      "length" : 29
+    },
+    {
+      "activity" : "validate",
+      "start" : 82,
+      "length" : 718
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 90,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 90,
+      "length" : 179
+    },
+    {
+      "activity" : "generate2",
+      "start" : 96,
+      "length" : 1023
+    },
+    {
+      "activity" : "generate2",
+      "start" : 100,
+      "length" : 192
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 110,
+      "length" : 7
+    },
+    {
+      "activity" : "scanExamplesForR5",
+      "start" : 126,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-be-pregnancy-status.json",
+    "size" : 9993,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 78,
+      "length" : 5
+    },
+    {
+      "activity" : "load",
+      "start" : 78,
+      "length" : 10
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 78,
+      "length" : 194
+    },
+    {
+      "activity" : "load-configure",
+      "start" : 79,
+      "length" : 9
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 79,
+      "length" : 105
+    },
+    {
+      "activity" : "validate",
+      "start" : 83,
+      "length" : 2906
+    },
+    {
+      "activity" : "checkConformanceResources",
+      "start" : 89,
+      "length" : 2
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 90,
+      "length" : 3
+    },
+    {
+      "activity" : "generate1",
+      "start" : 91,
+      "length" : 936
+    },
+    {
+      "activity" : "generate2",
+      "start" : 97,
+      "length" : 2672
+    },
+    {
+      "activity" : "generate2",
+      "start" : 100,
+      "length" : 714
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 110,
+      "length" : 42
+    },
+    {
+      "activity" : "scanProfilesForR5",
+      "start" : 126,
+      "length" : 1
+    },
+    {
+      "activity" : "scanExamplesForR5",
+      "start" : 126,
+      "length" : 3
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/ValueSet-be-pregnancy-status-vs.json",
+    "size" : 842,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 78,
+      "length" : 2
+    },
+    {
+      "activity" : "load",
+      "start" : 78,
+      "length" : 7
+    },
+    {
+      "activity" : "load",
+      "start" : 78,
+      "length" : 1
+    },
+    {
+      "activity" : "load-configure",
+      "start" : 79,
+      "length" : 1
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 79,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 80,
+      "length" : 503
+    },
+    {
+      "activity" : "validate",
+      "start" : 81,
+      "length" : 1018
+    },
+    {
+      "activity" : "generate1",
+      "start" : 92,
+      "length" : 15
+    },
+    {
+      "activity" : "generate2",
+      "start" : 100,
+      "length" : 250
+    }]
+  },
+  {
+    "name" : "input/examples/Observation-ex-pregnancy-status-contained.json",
+    "size" : 2477,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 78,
+      "length" : 3
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 80,
+      "length" : 516
+    },
+    {
+      "activity" : "validate",
+      "start" : 90,
+      "length" : 491
+    },
+    {
+      "activity" : "generate1",
+      "start" : 92,
+      "length" : 22
+    },
+    {
+      "activity" : "generate2",
+      "start" : 100,
+      "length" : 28
+    }]
+  },
+  {
+    "name" : "/fsh-generated/includes/menu.xml",
+    "size" : 1115,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 100,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/fsh-generated/includes/fsh-link-references.md",
+    "size" : 522
+  },
+  {
+    "name" : "/input/pagecontent/StructureDefinition-be-observation-pregnancy-status-intro.md",
+    "size" : 1219,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 100,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/pregnancy-status.md",
+    "size" : 7025
+  },
+  {
+    "name" : "/input/pagecontent/StructureDefinition-PregnancyStatusDataSet-intro.md",
+    "size" : 1224,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 100,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/StructureDefinition-be-pregnancy-condition-intro.md",
+    "size" : 1302
+  },
+  {
+    "name" : "/input/pagecontent/index.md",
+    "size" : 1471
+  },
+  {
+    "name" : "/template/config",
+    "size" : 0
+  },
+  {
+    "name" : "/template/config/_config.yml",
+    "size" : 46
+  },
+  {
+    "name" : "/temp/pages/_includes/artifacts.xml",
+    "size" : 8076,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 100,
+      "length" : 1
+    }]
+  }]
+}
