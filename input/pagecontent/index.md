@@ -1,5 +1,10 @@
 # Belgian Pregnancy Implementation Guide
 
+{:.stu-note}
+This Belgian standard is based on requirements initially raised by Flanders and will continue to evolve in the future to respond to new needs and insights from other entities. Its use implies acceptance that changes may occur, including breaking changes that could impact existing implementations.  
+These evolutions are always developed through a structured process, in which stakeholders are actively involved in working groups, both from existing and new initiatives.
+
+
 ## Introduction
 
 This Implementation Guide (IG) defines how pregnancy data is exchanged in Belgium using HL7 FHIR. Pregnancy and birth involve a broad pregnancy care set, contributed and consumed by many initiatives and stakeholders over the full course of care. This IG is the common specification for that care set, designed to be reused across projects and to extend as additional stakeholders contribute their data and use cases.

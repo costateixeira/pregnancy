@@ -40,6 +40,15 @@ Alias: $IpsEddVS    = http://hl7.org/fhir/uv/ips/ValueSet/edd-method-uv-ips
 Alias: $IpsPsVS     = http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
 
 
+// ═══════════════════════════════════════════════════════════════════════════════
+//  DISABLED (2026-07-09): the six illustrative per-detail Observation profiles
+//  below are superseded by the single contained model BePregnancyStatus
+//  (pregnancy-status-contained.fsh) — the approach agreed 2026-06-23. They are
+//  commented out (not deleted) so the history stays visible. The consolidated
+//  example is Observation-ex-pregnancy-status-contained.json.
+// ═══════════════════════════════════════════════════════════════════════════════
+/*
+
 // ─── Observation: pregnancy status ──────────────────────────────────────────
 
 Profile:     BePregnancyStatusObservation
@@ -240,3 +249,5 @@ pregnancy has ended. May be tied to a pregnancy via
 * valueQuantity.value 1..1
 * valueQuantity.system = $UCUM
 * valueQuantity.code = #1
+
+*/
