@@ -1,38 +1,21 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-//  Examples — the same pregnancy data shown under each framing, and the
-//  transitions between them.
+//  Examples for the pregnancy IG.
 //
-//  The detail observations (expected date of delivery, expected number of
-//  children, ...) are the ROBUST CORE: they carry the actual values and stay
-//  unchanged regardless of how the pregnancy as a whole is represented. Over that
-//  core there are two framings:
+//  The administrative model is BePregnancyStatus — a pregnancy status Observation
+//  that CONTAINS its detail observations (EDD, expected number of children, …),
+//  each a generic be-clinical-observation distinguished only by its code. The
+//  single consolidated example is provided as predefined JSON:
+//    input/examples/Observation-ex-pregnancy-status-contained.json
+//  (SUSHI cannot build an inline-instance example whose contained resources are
+//  sliced by code, so it lives as a predefined resource.)
 //
-//    Summary framing   the pregnancy status as a point-in-time Observation that
-//                      asserts "pregnant / not pregnant" and groups the detail
-//                      observations via Observation.hasMember (IPS-aligned).
+//  Active here: the shared actors (Patient, Practitioner) referenced by that
+//  contained instance, plus one Condition example (the episode framing).
 //
-//    Episode framing   the pregnancy as a Condition (onset, clinical status, end).
-//                      The observations point to it via Observation.focus — both
-//                      the status Observation and its members — so any observation
-//                      that belongs to a pregnancy is known.
-//
-//  Whichever framing is not present is an OPTIONAL ADD-ON that can be derived from
-//  the same core later, without touching the details. The examples below show each
-//  framing on its own, both together, and confirm that moving between them needs no
-//  rework of the detail observations.
-//
-//  Note: hasMember (summary -> its members) and focus (observation -> Condition)
-//  are independent. hasMember has nothing to do with the Condition.
-//
-//  `focus` may be a LITERAL reference to a Condition resource, or a LOGICAL
-//  reference (Reference.identifier) holding a unique pregnancy identifier. The
-//  logical form is usable TODAY — before any Condition resource exists it already
-//  groups the observations of one pregnancy. The examples show both:
-//    `*-linked` instances : focus as a literal Reference(ex-pregnancy-condition).
-//    `*-by-id`  instances : focus as a logical reference (a pregnancy identifier),
-//                           with NO Condition resource at all.
-//  Either way, when a Condition resource later exists the same `focus` resolves to
-//  it with no change to the observations.
+//  DISABLED below (block comment): the nine standalone Observation examples that
+//  demonstrated the earlier per-detail-profile framing. They are superseded by the
+//  contained instance, which carries the same detail values inline. Kept as a
+//  comment (not deleted) alongside the disabled profiles in pregnancy-profiles.fsh.
 // ═══════════════════════════════════════════════════════════════════════════════
 
 Alias: $CondClinical = http://terminology.hl7.org/CodeSystem/condition-clinical
@@ -60,13 +43,31 @@ Description: "Practitioner who records the pregnancy data in all examples."
 * name.given = "Anke"
 
 
+// ─── Pregnancy as a Condition (episode framing) ──────────────────────────────
+//  The pregnancy modelled as a longitudinal Condition. Detail observations may
+//  reference it via Observation.focus (literal or logical reference).
+
+Instance:   ex-pregnancy-condition
+InstanceOf: BePregnancyCondition
+Usage:      #example
+Title:      "Pregnancy as a Condition (clinical episode)"
+Description: "Episode framing: the pregnancy modelled as a longitudinal Condition, with onset and clinical status. The detail observations reference it via focus."
+* clinicalStatus = $CondClinical#active
+* subject = Reference(ex-pregnant-woman)
+* recorder = Reference(ex-gynaecologist)
+* recordedDate = "2026-02-10"
+* onsetDateTime = "2026-01-05"
+
+
 // ═══════════════════════════════════════════════════════════════════════════════
-//  THE ROBUST CORE — detail observations
-//
-//  These carry the actual values and do not point to any parent. They are reused
-//  as-is by every framing below; nothing here changes when a framing is added or
-//  removed.
+//  DISABLED (2026-07-09): standalone Observation examples for the earlier
+//  per-detail-profile framing. Superseded by the contained instance
+//  (Observation-ex-pregnancy-status-contained.json), which carries the same detail
+//  values inline. These depend on the disabled profiles in pregnancy-profiles.fsh.
 // ═══════════════════════════════════════════════════════════════════════════════
+/*
+
+// ─── The robust core: detail observations ─────────────────────────────────────
 
 Instance:   ex-edd
 InstanceOf: BeEstimatedDateOfDeliveryObservation
@@ -96,19 +97,13 @@ Description: "Expected number of children. Part of the robust core: identical un
 * valueQuantity.value = 1
 
 
-// ═══════════════════════════════════════════════════════════════════════════════
-//  SUMMARY FRAMING — pregnancy status as an Observation (no Condition)
-//
-//  This is the current scope. The status Observation asserts the finding and
-//  groups the core observations via hasMember. The members do not point back, so
-//  they are reusable as-is. No Condition is involved.
-// ═══════════════════════════════════════════════════════════════════════════════
+// ─── Summary framing: pregnancy status as an Observation (no Condition) ───────
 
 Instance:   ex-pregnancy-status
 InstanceOf: BePregnancyStatusObservation
 Usage:      #example
 Title:      "Pregnancy status as a summary Observation (no Condition)"
-Description: "Summary framing: pregnancy status as a point-in-time Observation that asserts the finding and groups the core detail observations via hasMember. IPS-aligned. This is the current scope."
+Description: "Summary framing: pregnancy status as a point-in-time Observation that asserts the finding and groups the core detail observations via hasMember. IPS-aligned."
 * identifier.system = $ObsId
 * identifier.value = "status-summary"
 * status = #final
@@ -120,29 +115,8 @@ Description: "Summary framing: pregnancy status as a point-in-time Observation t
 * hasMember[+] = Reference(ex-children)
 
 
-// ═══════════════════════════════════════════════════════════════════════════════
-//  EPISODE FRAMING — pregnancy as a Condition
-//
-//  The pregnancy is a clinical episode (onset, clinicalStatus, optional end). The
-//  observations reference it via Observation.focus — it is the observation that
-//  points to the Condition, not the reverse.
-// ═══════════════════════════════════════════════════════════════════════════════
+// ─── Episode framing: detail observations referencing the Condition ──────────
 
-Instance:   ex-pregnancy-condition
-InstanceOf: BePregnancyCondition
-Usage:      #example
-Title:      "Pregnancy as a Condition (clinical episode)"
-Description: "Episode framing: the pregnancy modelled as a longitudinal Condition, with onset and clinical status. The detail observations reference it via focus."
-* clinicalStatus = $CondClinical#active
-* subject = Reference(ex-pregnant-woman)
-* recorder = Reference(ex-gynaecologist)
-* recordedDate = "2026-02-10"
-* onsetDateTime = "2026-01-05"
-
-// ex-edd-linked / ex-children-linked are IDENTICAL to the core ex-edd /
-// ex-children except for the single `focus` line. That one optional reference is
-// the ONLY change needed to place a core observation under a Condition — nothing
-// else about the observation changes.
 Instance:   ex-edd-linked
 InstanceOf: BeEstimatedDateOfDeliveryObservation
 Usage:      #example
@@ -173,22 +147,7 @@ Description: "The core expected-number-of-children observation (ex-children) wit
 * focus = Reference(ex-pregnancy-condition) // the only difference vs ex-children
 
 
-// ═══════════════════════════════════════════════════════════════════════════════
-//  BOTH FRAMINGS TOGETHER — the summary Observation over a Condition
-//
-//  The core observations are simultaneously grouped by the summary Observation
-//  (hasMember) and reference the Condition (focus). Neither link requires the
-//  other, and neither requires changing the observation's clinical content. Here
-//  the summary Observation is an optional, IPS-compatible view over the episode.
-//
-//  Transitions — none of them touch the detail observations' clinical content:
-//    add an episode    : start from the summary framing, add a Condition and the
-//                        one `focus` reference (ex-edd -> ex-edd-linked, etc.).
-//    add a summary     : start from the episode framing, add a summary Observation
-//                        whose hasMember references the observations.
-//    remove the episode: drop the Condition; the observations lose only `focus`.
-//    remove the summary: drop the summary Observation; the observations are untouched.
-// ═══════════════════════════════════════════════════════════════════════════════
+// ─── Both framings together: summary Observation over a Condition ────────────
 
 Instance:   ex-pregnancy-status-with-condition
 InstanceOf: BePregnancyStatusObservation
@@ -207,19 +166,7 @@ Description: "Both framings together: the same summary Observation, grouping the
 * focus = Reference(ex-pregnancy-condition) // the summary points to the Condition too
 
 
-// ═══════════════════════════════════════════════════════════════════════════════
-//  USABLE TODAY — focus as a logical reference (a unique pregnancy identifier)
-//
-//  Before any BePregnancyCondition resource exists, `focus` can already carry a
-//  LOGICAL reference: Reference.identifier holding a unique pregnancy identifier.
-//  This groups every observation that belongs to the same pregnancy WITHOUT a
-//  Condition resource being exchanged. Later the same `focus` simply resolves to a
-//  Condition (a literal reference) with no change to these observations.
-//
-//  Every instance below shares the same pregnancy identifier
-//  ($PregnancyId | PREG-2026-0001), which is what ties them together as one
-//  pregnancy. Note there is NO Condition instance here.
-// ═══════════════════════════════════════════════════════════════════════════════
+// ─── Usable today: focus as a logical reference (a pregnancy identifier) ─────
 
 Instance:   ex-edd-by-id
 InstanceOf: BeEstimatedDateOfDeliveryObservation
@@ -269,9 +216,4 @@ Description: "Summary Observation grouping its members via hasMember and tied to
 * focus.identifier.system = $PregnancyId
 * focus.identifier.value = "PREG-2026-0001"
 
-
-// NOTE: the administrative model example (BePregnancyStatus — a pregnancy status
-// Observation that CONTAINS its detail observations) is provided as JSON in
-// input/examples/Observation-ex-pregnancy-status-contained.json. It lives as a
-// predefined resource because SUSHI cannot build an inline-instance example whose
-// contained resources are sliced by code.
+*/
